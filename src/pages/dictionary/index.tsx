@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-function Home(): JSX.Element {
+function Dictionary(): JSX.Element {
   return (
     <View>
-      <Text>홈</Text>
+      <Text>사전</Text>
     </View>
   );
 }
 
-export default Home;
+export default Dictionary;

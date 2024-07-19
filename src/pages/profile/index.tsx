@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, View} from 'react-native';
 
-function Home(): JSX.Element {
+function Profile(): JSX.Element {
   return (
     <View>
-      <Text>홈</Text>
+      <Text>프로필</Text>
     </View>
   );
 }
 
-export default Home;
+export default Profile;

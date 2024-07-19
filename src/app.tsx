@@ -1,10 +1,12 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 import {
+  Button,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
 
@@ -15,43 +17,49 @@ const styles = StyleSheet.create({
     marginTop: 32,
     paddingHorizontal: 24,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  navigationBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingTop: 20,
+    paddingBottom: 8,
+    paddingHorizontal: 36,
+    borderWidth: 0.5,
+    borderColor: 'rgba(0, 0, 0, 0.3)',
+    borderTopRightRadius: 36,
+    borderTopLeftRadius: 36,
+    borderBottomWidth: 0,
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
+  navigationBarButton: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: 42,
+    gap: 4,
   },
 });
 
-function NavigationBar(): React.JSX.Element {
-  function NavigationBarButton(): React.JSX.Element {
-    return (
-      <View>
-        {/* <Icon /> */}
-        <Text>홈</Text>
-      </View>
-    );
-  }
-  return (
-    <SafeAreaView>
-      <NavigationBarButton />
-    </SafeAreaView>
-  );
-}
-
 function App(): React.JSX.Element {
-  let page = useState('home');
+  const [page, setPage] = useState('home');
+
   return (
-    <SafeAreaView>
-      {/* <View */}
-      {routes[page[0].toString].page}
-      <NavigationBar />
+    // eslint-disable-next-line react-native/no-inline-styles
+    <SafeAreaView style={{flex: 1}}>
+      {/* eslint-disable-next-line react-native/no-inline-styles */}
+      <View style={{flex: 1}}>{routes[page].page}</View>
+      <View style={styles.navigationBar}>
+        {Object.entries(routes).map(([key, value]) => (
+          <TouchableOpacity
+            activeOpacity={0.7}
+            key={key + 'View'}
+            style={styles.navigationBarButton}
+            onPressOut={() => setPage(key)}>
+            <View
+              key={key + 'Icon'}
+              style={{width: 28, height: 28, backgroundColor: '#000'}}
+            />
+            <Text key={key}>{value.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
     </SafeAreaView>
   );
 }
