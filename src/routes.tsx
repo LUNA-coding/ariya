@@ -1,7 +1,7 @@
 import Home from './pages/home';
-import Dictionary from './pages/dictionary';
 import Test from './pages/test';
 import Profile from './pages/profile';
+import Dictionary from './pages/dictionary';
 
 interface Route {
   title: string;
