@@ -61,7 +61,6 @@ function App(): React.JSX.Element {
             style={styles.navigationBarButton}
             onPressOut={() => setPage(key)}>
             {value.icon(page)}
-            {/* <View key={key + 'Icon'} style={styles.navigationBarIcon} /> */}
             <Text
               key={key}
               style={[

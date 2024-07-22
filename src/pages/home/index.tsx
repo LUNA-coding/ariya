@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View} from 'react-native';
+import {Text, Touchable, TouchableOpacity, View} from 'react-native';
 
 import {styles} from './style';
 
@@ -11,7 +11,11 @@ function Home(): JSX.Element {
         <Text>홈</Text>
       </View>
       <View>
+        {/* behind button */}
+        <TouchableOpacity>{/* <ArrowIcon /> */}</TouchableOpacity>
         <Text>Chapter 1. 돈이란 무엇일까?</Text>
+        {/* forward button */}
+        <TouchableOpacity>{/* <ArrowIcon /> */}</TouchableOpacity>
       </View>
       <View>
         <Text>돼지 저금통</Text>
