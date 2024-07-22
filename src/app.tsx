@@ -33,7 +33,10 @@ const styles = StyleSheet.create({
     width: 42,
     gap: 4,
   },
-  navigationBarText: {},
+  navigationBarText: {
+    fontFamily: 'SUITE-SemiBold',
+    fontSize: 12,
+  },
   page: {
     flex: 1,
     paddingTop: 12,
