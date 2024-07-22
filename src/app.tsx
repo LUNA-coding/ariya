@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 
 import {routes} from './routes';
+import {AppColor} from './global';
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -32,11 +33,7 @@ const styles = StyleSheet.create({
     width: 42,
     gap: 4,
   },
-  navigationBarIcon: {
-    width: 28,
-    height: 28,
-    backgroundColor: '#000',
-  },
+  navigationBarText: {},
   page: {
     flex: 1,
     paddingTop: 12,
@@ -60,8 +57,21 @@ function App(): React.JSX.Element {
             key={key + 'View'}
             style={styles.navigationBarButton}
             onPressOut={() => setPage(key)}>
-            <View key={key + 'Icon'} style={styles.navigationBarIcon} />
-            <Text key={key}>{value.title}</Text>
+            {value.icon(page)}
+            {/* <View key={key + 'Icon'} style={styles.navigationBarIcon} /> */}
+            <Text
+              key={key}
+              style={[
+                styles.navigationBarText,
+                {
+                  color:
+                    page === key.toString()
+                      ? AppColor.primary
+                      : AppColor.grey500,
+                },
+              ]}>
+              {value.title}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
