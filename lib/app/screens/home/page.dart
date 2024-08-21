@@ -4,6 +4,7 @@ import 'package:ariya/app/core/theme/ariya_colors.dart';
 import 'package:ariya/app/core/theme/ariya_typography.dart';
 import 'package:ariya/app/routes/routes.dart';
 import 'package:ariya/app/screens/home/controller.dart';
+import 'package:ariya/app/screens/widgets/customNavigationBar.dart';
 
 class HomeScreen extends GetView<HomeController> {
   const HomeScreen({super.key});
@@ -62,6 +63,7 @@ class HomeScreen extends GetView<HomeController> {
           ],
         ),
       ),
+      bottomNavigationBar: CustomNaviationBar(currentIndex: 0)
     );
   }
 
