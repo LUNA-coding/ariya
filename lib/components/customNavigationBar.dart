@@ -11,10 +11,7 @@ class CustomNaviationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(16),
-            topRight: Radius.circular(16),
-          ),
+          color: Colors.white,
           border: Border.all(color: Color.fromRGBO(184, 184, 184, 1.0), width: 0.5),
         ),
         height: 70.0, // BottomNavigationBar의 높이 조정
@@ -24,23 +21,24 @@ class CustomNaviationBar extends StatelessWidget {
           topRight: Radius.circular(20.0),
         ),
         child: BottomNavigationBar(
-          currentIndex: this.currentIndex,
-          selectedItemColor: Color.fromRGBO(105, 58, 245, 1.0),
-          unselectedItemColor: Color.fromRGBO(166, 166, 166, 1.0),
+          backgroundColor: Colors.white,
+          currentIndex: currentIndex,
+          selectedItemColor: Color.fromRGBO(54, 54, 54, 1.0),
+          unselectedItemColor: Color.fromRGBO(184, 184, 184, 1.0),
           selectedLabelStyle: TextStyle(fontSize: 12),
           unselectedLabelStyle: TextStyle(fontSize: 12),
           type: BottomNavigationBarType.fixed,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home_rounded, size:28),
+              icon: Icon(Icons.house_rounded, size:28),
               label: '랭킹',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.area_chart, size:28),
+              icon: Icon(Icons.bar_chart_rounded, size:28),
               label: '투자',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.savings_rounded, size:28),
+              icon: Icon(Icons.payments_rounded, size:28),
               label: '은행',
             ),
             BottomNavigationBarItem(
@@ -51,16 +49,16 @@ class CustomNaviationBar extends StatelessWidget {
           onTap: (int index) {
             switch (index) {
               case 0:
-                Get.toNamed('/');
+                Get.offNamed('/');
                 break;
               case 1:
-                Get.toNamed('/');
+                Get.offNamed('/');
                 break;
               case 2:
-                Get.toNamed('/');
+                Get.offNamed('/video');
                 break;
               case 3:
-                Get.toNamed('/');
+                Get.offNamed('/ranking');
                 break;
             }
           },
