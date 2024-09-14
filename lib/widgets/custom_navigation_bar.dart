@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CustomNaviationBar extends StatelessWidget {
-  final int currentIndex;
+import 'package:ariya/routes/routes.dart';
 
-  const CustomNaviationBar({super.key, required this.currentIndex});
+class CustomNavigationBar extends StatelessWidget {
+  const CustomNavigationBar({super.key, required this.currentIndex});
+
+  final int currentIndex;
   static Color defaultColor = const Color.fromRGBO(184, 184, 184, 1.0);
   static Color selectedColor = const Color.fromRGBO(54, 54, 54, 1.0);
 
@@ -50,16 +52,16 @@ class CustomNaviationBar extends StatelessWidget {
           onTap: (int index) {
             switch (index) {
               case 0:
-                Get.offAndToNamed('/home');
+                Get.offAndToNamed(Routes.HOME);
                 break;
               case 1:
-                Get.offAndToNamed('/invest');
+                Get.offAndToNamed(Routes.INVEST);
                 break;
               case 2:
-                Get.offAndToNamed('/video');
+                Get.offAndToNamed(Routes.VIDEO);
                 break;
               case 3:
-                Get.offAndToNamed('/ranking');
+                Get.offAndToNamed(Routes.RANK);
                 break;
             }
           },

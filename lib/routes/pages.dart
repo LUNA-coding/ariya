@@ -16,25 +16,25 @@ class AppPages {
       name: Routes.HOME,
       page: () => const HomePage(),
       binding: HomePageBinding(),
-      transition: Transition.cupertino,
+      transition: Transition.noTransition,
     ),
     GetPage(
       name: Routes.RANK,
       page: () => const RankPage(),
       binding: RankPageBinding(),
-      transition: Transition.cupertino,
+      transition: Transition.noTransition,
     ),
     GetPage(
       name: Routes.INVEST,
       page: () => InvestPage(),
       binding: InvestPageBinding(),
-      transition: Transition.cupertino,
+      transition: Transition.noTransition,
     ),
     GetPage(
       name: Routes.VIDEO,
       page: () => const VideoPage(),
       binding: VideoPageBinding(),
-      transition: Transition.cupertino,
+      transition: Transition.noTransition,
     ),
   ];
 }

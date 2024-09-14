@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import 'package:ariya/components/customNavigationBar.dart';
+import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/invest/controller.dart';
 
 class InvestPage extends GetView<InvestPageController> {
@@ -469,7 +469,7 @@ class InvestPage extends GetView<InvestPageController> {
           ),
         ]),
       ),
-      bottomNavigationBar: const CustomNaviationBar(currentIndex: 0),
+      bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
     );
   }
 }

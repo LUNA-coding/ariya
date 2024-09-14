@@ -3,7 +3,7 @@ import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:ariya/components/customNavigationBar.dart';
+import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/video/controller.dart';
 
 class VideoPage extends GetView<VideoPageController> {
@@ -94,7 +94,7 @@ class VideoPage extends GetView<VideoPageController> {
           ),
         ]),
       ),
-      bottomNavigationBar: const CustomNaviationBar(currentIndex: 0),
+      bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
     );
   }
 }
