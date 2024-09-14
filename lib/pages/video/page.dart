@@ -1,21 +1,14 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:percent_indicator/percent_indicator.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
-import 'package:ariya/components/customNavigationBar.dart';
+import 'package:percent_indicator/percent_indicator.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Video extends StatefulWidget {
-  const Video({super.key});
+import 'package:ariya/components/customNavigationBar.dart';
+import 'package:ariya/pages/video/controller.dart';
 
-  @override
-  _VideoState createState() => _VideoState();
-}
+class VideoPage extends GetView<VideoPageController> {
+  const VideoPage({super.key});
 
-class _VideoState extends State<Video> {
   @override
   Widget build(BuildContext context) {
     YoutubePlayerController controller = YoutubePlayerController(

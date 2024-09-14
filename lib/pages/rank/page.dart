@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:percent_indicator/percent_indicator.dart';
-
-import 'package:ariya/components/customNavigationBar.dart';
 import 'package:get/get.dart';
 
-class Ranking extends StatelessWidget {
-  const Ranking({super.key});
+import 'package:ariya/components/customNavigationBar.dart';
+import 'package:ariya/pages/rank/controller.dart';
+
+class RankPage extends GetView<RankPageController> {
+  const RankPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // final isOpened = useState<List<bool>>([true,false,false,false]);
-
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
       appBar: AppBar(
