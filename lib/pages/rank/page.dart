@@ -5,7 +5,10 @@ import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/rank/controller.dart';
 
 class RankPage extends GetView<RankPageController> {
-  const RankPage({super.key});
+  RankPage({super.key});
+
+  var isSchool = true.obs;
+  var rankList = [(1, '형석킴더스트리', '1,869,266원', 11), (2, '엑슨컴퍼니', '976,238원', -6), (3, '아이고배야', '920,382원', 0), (4, '석양공주님', '897,192원', 2), (5, '칸데르니아', '892,043원', 4), (6, '죠니월드', '879,108원', 0), (7, '단단무지', '799,732원', 0), (8, '앰비션', '798,172원', -3), (9, '두니주니', '789,187원', -6), (10, '차투리', '779,187원', 8), (11, '나는재영', '619,100원', -2), (12, '쌉조아', '602,113원', 0), (13, '잘생긴오리', '434,233원', 3)];
 
   @override
   Widget build(BuildContext context) {
@@ -18,73 +21,109 @@ class RankPage extends GetView<RankPageController> {
           title: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Container(
-                decoration: const BoxDecoration(
+              Obx(() => Container(
+                decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: Colors.black, // 테두리 색상 설정
+                      color: isSchool.value ? Colors.black : Colors.grey, // 테두리 색상 설정
                       width: 3.0, // 테두리 두께 설정
                     ),
                   ),
                 ),
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
                 width: MediaQuery.of(context).size.width / 2,
-                child: const Center(
+                child: Center(
                   child: Text(
                     '학교',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF1E1E1E),
+                      color: isSchool.value ? Colors.black : Colors.grey,
                       fontSize: 20,
                       fontFamily: 'SUITE',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-              ),
-              Container(
-                decoration: const BoxDecoration(
+              )),
+              Obx(() => Container(
+                decoration: BoxDecoration(
                   border: Border(
                     bottom: BorderSide(
-                      color: Colors.black, // 테두리 색상 설정
+                      color: !isSchool.value ? Colors.black : Colors.grey, // 테두리 색상 설정
                       width: 3.0, // 테두리 두께 설정
                     ),
                   ),
                 ),
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 12),
                 width: MediaQuery.of(context).size.width / 2,
-                child: const Center(
+                child: Center(
                   child: Text(
                     '전체',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF1E1E1E),
+                      color: !isSchool.value ? Colors.black : Colors.grey,
                       fontSize: 20,
                       fontFamily: 'SUITE',
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-              ),
+              )),
             ],
           )),
-      body: const SingleChildScrollView(
+      body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  '랭킹',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(children: [
+                      SizedBox(height: 18,),
+                      Image.asset('assets/images/rank/2.png', width: 80),
+                      const SizedBox(height: 16),
+                      Text('엑슨컴퍼니', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
+                      Text('976,238원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
+                    ],),
+                    Column(children: [
+                      Image.asset('assets/images/rank/1.png', width: 96),
+                      const SizedBox(height: 16),
+                      Text('형석킴더스트리', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
+                      Text('1,869,266원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
+                    ],),
+                    Column(children: [
+                      SizedBox(height: 18,),
+                      Image.asset('assets/images/rank/3.png', width: 80),
+                      const SizedBox(height: 16),
+                      Text('아이고배야', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
+                      Text('920,382원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
+                    ],),
+                  ],
                 ),
-                SizedBox(
-                  height: 20,
+                const SizedBox(height: 40,),
+                ...rankList.map((rank) => Padding(padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          SizedBox(width: 30, child: Text(rank.$1.toString(), style: const TextStyle(fontSize: 20, fontFamily: 'SUITE', fontWeight: FontWeight.w700))),
+                          const SizedBox(width: 16,),
+                          (rank.$4 > 0) ? SizedBox(width: 50, child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text(rank.$4.toString(), style: const TextStyle(color: Color(0xFFEB626B), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500),), Icon(Icons.keyboard_arrow_up, color: Color(0xFFEB626B),)],),) : 
+                          (rank.$4 < 0) ? SizedBox(width: 50, child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [Text((-rank.$4).toString(), style: const TextStyle(color: Color(0xFF1472EC), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500),), Icon(Icons.keyboard_arrow_down, color: Color(0xFF1472EC),)],),) : 
+                          const SizedBox(width: 50, child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [SizedBox(width: 8), Icon(Icons.remove, color: Color(0xFF858585),), SizedBox(width: 8), ],),),
+                          const SizedBox(width: 16,),
+                          Text(rank.$2, style: const TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
+                        ],
+                      ),
+                      Text(rank.$3, style: const TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
+                    ],
+                  ),
                 ),
-                Text(
-                  '내 포트폴리오와 비교해보세요',
-                  style: TextStyle(fontSize: 16, color: Color.fromRGBO(166, 166, 166, 1)),
                 ),
               ],
             ),

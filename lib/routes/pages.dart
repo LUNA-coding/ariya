@@ -20,7 +20,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.RANK,
-      page: () => const RankPage(),
+      page: () => RankPage(),
       binding: RankPageBinding(),
       transition: Transition.noTransition,
     ),
@@ -32,7 +32,7 @@ class AppPages {
     ),
     GetPage(
       name: Routes.VIDEO,
-      page: () => const VideoPage(),
+      page: () => VideoPage(),
       binding: VideoPageBinding(),
       transition: Transition.noTransition,
     ),
