@@ -7,6 +7,8 @@ import 'package:get/get.dart';
 import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/video/controller.dart';
 
+import 'widgets/ox_quiz.dart';
+
 const quiz_list = [];
 
 class VideoPage extends GetView<VideoPageController> {
@@ -103,7 +105,8 @@ class VideoPage extends GetView<VideoPageController> {
                   ),
                 ]),
               )
-            : const Quiz(title: "수요와 공급", question: "당신은 안전한 투자를 중요하게 생각하는 투자자입니다. 다음 중 어떤 투자 포트폴리오를 구성해야할까요?", choice_1: "니거", choice_2: "니거", answer: 1),
+            : const OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'O'),
+        // : const Quiz(title: "수요와 공급", question: "당신은 안전한 투자를 중요하게 생각하는 투자자입니다. 다음 중 어떤 투자 포트폴리오를 구성해야할까요?", choice_1: "니거", choice_2: "니거", answer: 1),
       ),
       bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
     );
