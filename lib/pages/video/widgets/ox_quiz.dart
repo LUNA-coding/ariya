@@ -1,5 +1,7 @@
-import 'package:ariya/pages/video/widgets/quiz_title.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+
+import 'package:ariya/pages/video/widgets/quiz_title.dart';
 
 class OxQuiz extends StatelessWidget {
   const OxQuiz({super.key, required this.question, required this.answer});
@@ -28,10 +30,12 @@ class OxQuiz extends StatelessWidget {
               Flexible(
                 child: Container(
                   height: 197,
+                  // width: double.infinity,
                   decoration: BoxDecoration(
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(12),
                   ),
+                  child: SvgPicture.asset('assets/images/quiz/O.svg', width: 100, height: 100),
                 ),
               ),
               const SizedBox(width: 12),
@@ -42,6 +46,7 @@ class OxQuiz extends StatelessWidget {
                     color: Colors.grey,
                     borderRadius: BorderRadius.circular(12),
                   ),
+                  child: SvgPicture.asset('assets/images/quiz/X.svg', width: 85.06, height: 85.05),
                 ),
               ),
             ],
