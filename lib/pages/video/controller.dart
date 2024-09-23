@@ -1,9 +1,10 @@
 import 'package:get/get.dart';
 
-class VideoPageController extends GetxController {
+import 'package:ariya/widgets/button_controller.dart';
+
+class VideoPageController extends GetxController with ButtonController {
   static VideoPageController get to => Get.find<VideoPageController>();
 
-  final RxString pressedButton = "".obs;
   final RxBool _isQuizTime = false.obs;
 
   get isQuizTime => _isQuizTime.value;

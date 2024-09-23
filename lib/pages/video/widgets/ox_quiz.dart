@@ -1,7 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import 'package:ariya/pages/video/widgets/quiz_title.dart';
+import 'package:ariya/pages/video/controller.dart';
+import 'package:ariya/global.dart';
+
+class OxQuizButton extends StatelessWidget {
+  const OxQuizButton({super.key, required this.image, required this.onPressed});
+
+  final Widget image;
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTapDown: (_) => VideoPageController.to.press(key.toString()),
+      onTapCancel: () => VideoPageController.to.unpress(),
+      onTapUp: (_) {
+        VideoPageController.to.unpress();
+        onPressed();
+      },
+      child: Flexible(
+        child: Obx(
+          () => Container(
+            // width: double.infinity,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: VideoPageController.to.isPressed(key.toString()) ? AriyaColor.grayscale400 : AriyaColor.grayscale200,
+              borderRadius: BorderRadius.circular(12),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 48),
+            child: image,
+          ),
+        ),
+      ),
+    );
+  }
+}
 
 class OxQuiz extends StatelessWidget {
   const OxQuiz({super.key, required this.question, required this.answer});
@@ -27,27 +63,33 @@ class OxQuiz extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              Flexible(
-                child: Container(
-                  height: 197,
-                  // width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: SvgPicture.asset('assets/images/quiz/O.svg', width: 100, height: 100),
-                ),
+              OxQuizButton(
+                image: SvgPicture.asset('assets/images/quiz/O.svg', width: 100, height: 100),
+                onPressed: () {
+                  if (answer == "O") {
+                    print("correct");
+                    // VideoPageController.to.correct();
+                  } else {
+                    // VideoPageController.to.incorrect();
+                  }
+                },
               ),
               const SizedBox(width: 12),
-              Flexible(
-                child: Container(
-                  height: 197,
-                  decoration: BoxDecoration(
-                    color: Colors.grey,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+              OxQuizButton(
+                image: Container(
+                  width: 100,
+                  height: 100,
+                  alignment: Alignment.center,
                   child: SvgPicture.asset('assets/images/quiz/X.svg', width: 85.06, height: 85.05),
                 ),
+                onPressed: () {
+                  if (answer == "X") {
+                    print("correct");
+                    // VideoPageController.to.correct();
+                  } else {
+                    // VideoPageController.to.incorrect();
+                  }
+                },
               ),
             ],
           ),
