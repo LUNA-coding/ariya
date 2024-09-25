@@ -7,9 +7,11 @@ import 'package:ariya/pages/video/controller.dart';
 import 'package:ariya/global.dart';
 
 class OxQuizButton extends StatelessWidget {
-  const OxQuizButton({super.key, required this.image, required this.onPressed});
+  const OxQuizButton({super.key, required this.image, required this.correctColor, required this.incorrectColor, required this.onPressed});
 
   final Widget image;
+  final Color correctColor;
+  final Color incorrectColor;
   final VoidCallback onPressed;
 
   @override
@@ -21,18 +23,21 @@ class OxQuizButton extends StatelessWidget {
         VideoPageController.to.unpress();
         onPressed();
       },
-      child: Flexible(
-        child: Obx(
-          () => Container(
-            // width: double.infinity,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: VideoPageController.to.isPressed(key.toString()) ? AriyaColor.grayscale400 : AriyaColor.grayscale200,
-              borderRadius: BorderRadius.circular(12),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 48),
-            child: image,
+      child: Obx(
+        () => Container(
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: VideoPageController.to.isQuizSolved
+                ? VideoPageController.to.isQuizCorrect
+                    ? correctColor
+                    : incorrectColor
+                : VideoPageController.to.isPressed(key.toString())
+                    ? AriyaColor.grayscale400
+                    : AriyaColor.grayscale200,
+            borderRadius: BorderRadius.circular(12),
           ),
+          padding: const EdgeInsets.symmetric(vertical: 48),
+          child: image,
         ),
       ),
     );
@@ -63,33 +68,41 @@ class OxQuiz extends StatelessWidget {
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              OxQuizButton(
-                image: SvgPicture.asset('assets/images/quiz/O.svg', width: 100, height: 100),
-                onPressed: () {
-                  if (answer == "O") {
-                    print("correct");
-                    // VideoPageController.to.correct();
-                  } else {
-                    // VideoPageController.to.incorrect();
-                  }
-                },
+              Flexible(
+                child: OxQuizButton(
+                  key: const Key("O"),
+                  image: SvgPicture.asset('assets/images/quiz/O.svg', width: 100, height: 100, color: AriyaColor.white),
+                  correctColor: AriyaColor.purple,
+                  incorrectColor: AriyaColor.red,
+                  onPressed: () {
+                    if (answer == "O" && !VideoPageController.to.isQuizSolved) {
+                      VideoPageController.to.correctQuiz();
+                    } else {
+                      VideoPageController.to.incorrectQuiz();
+                    }
+                  },
+                ),
               ),
               const SizedBox(width: 12),
-              OxQuizButton(
-                image: Container(
-                  width: 100,
-                  height: 100,
-                  alignment: Alignment.center,
-                  child: SvgPicture.asset('assets/images/quiz/X.svg', width: 85.06, height: 85.05),
+              Flexible(
+                child: OxQuizButton(
+                  key: const Key("X"),
+                  image: Container(
+                    width: 100,
+                    height: 100,
+                    alignment: Alignment.center,
+                    child: SvgPicture.asset('assets/images/quiz/X.svg', width: 85.06, height: 85.05),
+                  ),
+                  correctColor: AriyaColor.purple,
+                  incorrectColor: AriyaColor.red,
+                  onPressed: () {
+                    if (answer == "X" && !VideoPageController.to.isQuizSolved) {
+                      VideoPageController.to.correctQuiz();
+                    } else {
+                      VideoPageController.to.incorrectQuiz();
+                    }
+                  },
                 ),
-                onPressed: () {
-                  if (answer == "X") {
-                    print("correct");
-                    // VideoPageController.to.correct();
-                  } else {
-                    // VideoPageController.to.incorrect();
-                  }
-                },
               ),
             ],
           ),
