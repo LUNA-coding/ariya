@@ -36,7 +36,7 @@ class QuizResult extends StatelessWidget {
     TextSpan(
         children: [
             TextSpan(
-                text: '8,273',
+                text: point.toString(),
                 style: TextStyle(
                     color: Color(0xFF8C59CE),
                     fontSize: 52,
