@@ -27,13 +27,13 @@ class OxQuizButton extends StatelessWidget {
         () => Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: VideoPageController.to.isQuizSolved
-                ? VideoPageController.to.isQuizCorrect
-                    ? correctColor
-                    : incorrectColor
-                : VideoPageController.to.isPressed(key.toString())
-                    ? AriyaColor.grayscale400
-                    : AriyaColor.grayscale200,
+            color: VideoPageController.to.isQuizCorrect && VideoPageController.to.quizAnswer == (key as ValueKey).value
+                ? correctColor
+                : VideoPageController.to.isQuizInCorrect && VideoPageController.to.quizAnswer != (key as ValueKey).value
+                    ? incorrectColor
+                    : VideoPageController.to.isPressed(key.toString())
+                        ? AriyaColor.grayscale400
+                        : AriyaColor.grayscale200,
             borderRadius: BorderRadius.circular(12),
           ),
           padding: const EdgeInsets.symmetric(vertical: 48),
@@ -70,16 +70,21 @@ class OxQuiz extends StatelessWidget {
             children: [
               Flexible(
                 child: OxQuizButton(
-                  key: const Key("O"),
-                  image: SvgPicture.asset('assets/images/quiz/O.svg', width: 100, height: 100, color: AriyaColor.white),
+                  key: const ValueKey("O"),
+                  image: Obx(
+                    () => SvgPicture.asset(
+                      'assets/images/quiz/O.svg',
+                      width: 100,
+                      height: 100,
+                      color: VideoPageController.to.isQuizCorrect && VideoPageController.to.quizAnswer == "O" || VideoPageController.to.isQuizInCorrect && VideoPageController.to.quizAnswer != "O"
+                          ? AriyaColor.white
+                          : AriyaColor.red,
+                    ),
+                  ),
                   correctColor: AriyaColor.purple,
                   incorrectColor: AriyaColor.red,
                   onPressed: () {
-                    if (answer == "O" && !VideoPageController.to.isQuizSolved) {
-                      VideoPageController.to.correctQuiz();
-                    } else {
-                      VideoPageController.to.incorrectQuiz();
-                    }
+                    if (!VideoPageController.to.isQuizSolved) VideoPageController.to.answerQuiz(answer, "O");
                   },
                 ),
               ),
@@ -87,20 +92,25 @@ class OxQuiz extends StatelessWidget {
               Flexible(
                 child: OxQuizButton(
                   key: const Key("X"),
-                  image: Container(
-                    width: 100,
-                    height: 100,
-                    alignment: Alignment.center,
-                    child: SvgPicture.asset('assets/images/quiz/X.svg', width: 85.06, height: 85.05),
+                  image: Obx(
+                    () => Container(
+                      width: 100,
+                      height: 100,
+                      alignment: Alignment.center,
+                      child: SvgPicture.asset(
+                        'assets/images/quiz/X.svg',
+                        width: 85.06,
+                        height: 85.05,
+                        color: VideoPageController.to.isQuizCorrect && VideoPageController.to.quizAnswer == "X" || VideoPageController.to.isQuizInCorrect && VideoPageController.to.quizAnswer != "X"
+                            ? AriyaColor.white
+                            : AriyaColor.blue,
+                      ),
+                    ),
                   ),
                   correctColor: AriyaColor.purple,
                   incorrectColor: AriyaColor.red,
                   onPressed: () {
-                    if (answer == "X" && !VideoPageController.to.isQuizSolved) {
-                      VideoPageController.to.correctQuiz();
-                    } else {
-                      VideoPageController.to.incorrectQuiz();
-                    }
+                    if (!VideoPageController.to.isQuizSolved) VideoPageController.to.answerQuiz(answer, "X");
                   },
                 ),
               ),
