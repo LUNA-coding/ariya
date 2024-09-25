@@ -1,4 +1,5 @@
 import 'package:ariya/pages/video/widgets/quiz.dart';
+import 'package:ariya/pages/video/widgets/quiz_result.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
@@ -84,30 +85,31 @@ class VideoPage extends GetView<VideoPageController> {
           ]),
         ),
       ),
-      body: Obx(
-        () => VideoPageController.to.isQuizTime
-            ? SingleChildScrollView(
-                child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                  AspectRatio(
-                    aspectRatio: 9 / 16, // 세로 비율을 9:16으로 설정
-                    child: YoutubePlayer(
-                      controller: controller,
-                      showVideoProgressIndicator: true,
-                      progressIndicatorColor: Colors.amber,
-                      onReady: () {
-                        print('EXON is ready.');
-                        VideoPageController.to.startQuiz();
-                      },
-                      onEnded: (data) {
-                        print('Video has ended.');
-                      },
-                    ),
-                  ),
-                ]),
-              )
-            : const OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'O'),
-        // : const Quiz(title: "수요와 공급", question: "당신은 안전한 투자를 중요하게 생각하는 투자자입니다. 다음 중 어떤 투자 포트폴리오를 구성해야할까요?", choice_1: "니거", choice_2: "니거", answer: 1),
-      ),
+      body: QuizResult(point: 100),
+      // body: Obx(
+      //   () => VideoPageController.to.isQuizTime
+      //       ? SingleChildScrollView(
+      //           child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+      //             AspectRatio(
+      //               aspectRatio: 9 / 16, // 세로 비율을 9:16으로 설정
+      //               child: YoutubePlayer(
+      //                 controller: controller,
+      //                 showVideoProgressIndicator: true,
+      //                 progressIndicatorColor: Colors.amber,
+      //                 onReady: () {
+      //                   print('EXON is ready.');
+      //                   VideoPageController.to.startQuiz();
+      //                 },
+      //                 onEnded: (data) {
+      //                   print('Video has ended.');
+      //                 },
+      //               ),
+      //             ),
+      //           ]),
+      //         )
+      //       : const OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'O'),
+      //   // : const Quiz(title: "수요와 공급", question: "당신은 안전한 투자를 중요하게 생각하는 투자자입니다. 다음 중 어떤 투자 포트폴리오를 구성해야할까요?", choice_1: "니거", choice_2: "니거", answer: 1),
+      // ),
       bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
     );
   }
