@@ -1,5 +1,6 @@
 import 'package:ariya/global.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class QuizResult extends StatelessWidget {
   final int point;
@@ -94,7 +95,9 @@ class QuizResult extends StatelessWidget {
                   ),
                 )),
             const SizedBox(height: 16),
-            SizedBox(
+            GestureDetector(
+              onTap: () => Get.back(),
+              child: SizedBox(
                 width: double.infinity,
                 height: 56,
                 child: GestureDetector(
@@ -110,7 +113,9 @@ class QuizResult extends StatelessWidget {
                       letterSpacing: -0.60,
                     ),
                   ),
-                )),
+                ),
+              ),
+            )
           ],
         ),
       ),

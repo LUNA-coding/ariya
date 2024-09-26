@@ -1,4 +1,3 @@
-import 'package:ariya/global.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +5,17 @@ import 'package:get/get.dart';
 import 'dart:async';
 
 import 'package:ariya/pages/video/controller.dart';
+import 'package:ariya/routes/routes.dart';
+import 'package:ariya/global.dart';
 
 class VideoPage extends GetView<VideoPageController> {
   const VideoPage({super.key});
 
-    String formatDuration(int totalSeconds) {
-      int minutes = totalSeconds ~/ 60; // 분 계산
-      int seconds = totalSeconds % 60;  // 초 계산
-      return '$minutes:${seconds.toString().padLeft(2, '0')}';
-    }
+  String formatDuration(int totalSeconds) {
+    int minutes = totalSeconds ~/ 60; // 분 계산
+    int seconds = totalSeconds % 60; // 초 계산
+    return '$minutes:${seconds.toString().padLeft(2, '0')}';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class VideoPage extends GetView<VideoPageController> {
     );
 
     var seconds = 0.obs;
-    var _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+    var timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       seconds.value++;
     });
 
@@ -40,19 +41,22 @@ class VideoPage extends GetView<VideoPageController> {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Column(children: [
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              const Icon(
-                Icons.close_rounded,
-                color: Color.fromRGBO(79, 79, 79, 1),
+              GestureDetector(
+                onTap: () => Get.offAllNamed(Routes.HOME),
+                child: const Icon(
+                  Icons.close_rounded,
+                  color: Color.fromRGBO(79, 79, 79, 1),
+                ),
               ),
               Obx(() => LinearPercentIndicator(
-                lineHeight: 8.0,
-                animationDuration: 1000,
-                percent: VideoPageController.to.process,
-                barRadius: const Radius.circular(99),
-                progressColor: const Color.fromRGBO(156, 112, 213, 1),
-                backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
-                width: 220,
-              )),
+                    lineHeight: 8.0,
+                    animationDuration: 1000,
+                    percent: VideoPageController.to.process,
+                    barRadius: const Radius.circular(99),
+                    progressColor: const Color.fromRGBO(156, 112, 213, 1),
+                    backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
+                    width: 220,
+                  )),
               Container(
                 width: 70,
                 height: 32,
@@ -72,17 +76,17 @@ class VideoPage extends GetView<VideoPageController> {
                     SizedBox(
                       width: double.infinity,
                       child: Obx(() => Text(
-                         formatDuration(seconds.value),
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF4F4F4F),
-                          fontSize: 16,
-                          fontFamily: 'Spoqa Han Sans Neo',
-                          fontWeight: FontWeight.w500,
-                          height: 0,
-                          letterSpacing: -0.48,
-                        ),
-                      )),
+                            formatDuration(seconds.value),
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              color: Color(0xFF4F4F4F),
+                              fontSize: 16,
+                              fontFamily: 'Spoqa Han Sans Neo',
+                              fontWeight: FontWeight.w500,
+                              height: 0,
+                              letterSpacing: -0.48,
+                            ),
+                          )),
                     ),
                   ],
                 ),
@@ -93,7 +97,12 @@ class VideoPage extends GetView<VideoPageController> {
       ),
       body: Stack(
         children: [
-          VideoPageController.to.quiz.value,
+          Obx(
+            () => AnimatedSwitcher(
+              duration: const Duration(milliseconds: 250),
+              child: VideoPageController.to.quiz.value,
+            ),
+          ),
           Obx(
             () => AnimatedPositioned(
               //숫자 조정 해주세요
