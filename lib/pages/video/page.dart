@@ -2,6 +2,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'dart:async';
 
 import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/video/controller.dart';
