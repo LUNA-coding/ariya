@@ -41,7 +41,7 @@ class CustomNavigationBar extends StatelessWidget {
               label: '투자',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons., size: 28, color: Get.currentRoute == '/video' ? selectedColor : defaultColor),
+              icon: Icon(Icons.quiz_rounded, size: 28, color: Get.currentRoute == '/video' ? selectedColor : defaultColor),
               label: '퀴즈',
             ),
             BottomNavigationBarItem(
