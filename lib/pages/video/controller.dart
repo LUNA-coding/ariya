@@ -34,8 +34,10 @@ class VideoPageController extends GetxController with ButtonController {
       answer: 1,
       choice: const ["주식", "채권"],
       image: [
-        SvgPicture.asset('assets/images/quiz/stock.svg', height: 76, width: 76),
-        SvgPicture.asset('assets/images/quiz/bond.svg', height: 76, width: 76),
+        Image.asset('assets/images/quiz/stock.png', height: 76, width: 76),
+        Image.asset('assets/images/quiz/bond.png', height: 76, width: 76),
+        // SvgPicture.asset('assets/images/quiz/stock.svg', height: 76, width: 76),
+        // SvgPicture.asset('assets/images/quiz/bond.svg', height: 76, width: 76),
       ],
     ),
     OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'X'),
