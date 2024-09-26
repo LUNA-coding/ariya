@@ -9,7 +9,7 @@ class RankPage extends GetView<RankPageController> {
 
   var isSchool = true.obs;
   var entireRankList = [(1, '형석킴더스트리', '1,869,266원', 11), (2, '엑슨컴퍼니', '976,238원', -6), (3, '아이고배야', '920,382원', 0), (4, '석양공주님', '897,192원', 2), (5, '칸데르니아', '892,043원', 4), (6, '죠니월드', '879,108원', 0), (7, '단단무지', '799,732원', 0), (8, '앰비션', '798,172원', -3), (9, '두니주니', '789,187원', -6), (10, '차투리', '779,187원', 8), (11, '나는재영', '619,100원', -2), (12, '쌉조아', '602,113원', 0), (13, '잘생긴오리', '434,233원', 3)];
-  var schoolRankList = [(1, '한국디지털미디어고등학교', '9,264,137원', 2), (2, '동글고등학교', '8,176,349원', -1), (3, '세모중학교', '7,120,289원', 1), (4, '네모고등학교', '7,097,112원', -2), (5, '하트고등학교', '6,191,029원', 2), (6, '마름모중학교', '5,070,101원', 0), (7, '타원고등학교', '5,029,772원', 5), (8, '원고등학교', '4,824,112원', -2), (9, '사각형고등학교', '4,189,180원', 1), (10, '직사각형고등학교', '2,730,120원', 0)];
+  var schoolRankList = [(1, '한국디지털미디어고등학교', '9,264,137원', 2), (2, '선린인터넷고', '8,176,349원', -1), (3, '세마고등학교', '7,120,289원', 1), (4, '네모고등학교', '7,097,112원', -2), (5, '하트고등학교', '6,191,029원', 2), (6, '마름모중학교', '5,070,101원', 0), (7, '타원고등학교', '5,029,772원', 5), (8, '원고등학교', '4,824,112원', -2), (9, '사각형고등학교', '4,189,180원', 1), (10, '직사각형고등학교', '2,730,120원', 0)];
 
   @override
   Widget build(BuildContext context) {
@@ -90,20 +90,20 @@ class RankPage extends GetView<RankPageController> {
                   children: [
                     Obx(() => Column(children: [
                       SizedBox(height: 18,),
-                      Image.asset('assets/images/rank/2.png', width: 80),
+                      Image.asset(isSchool.value ? 'assets/images/rank/sunrin.png' : 'assets/images/rank/2.png', width: 80),
                       const SizedBox(height: 16),
-                      Text(isSchool.value ? '동글고등학교' : '형석킴더스트리', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
-                      Text(isSchool.value ? '8,176,349원' : '1,869,266원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
+                      Text(isSchool.value ? '동글고등학교' : '엑슨컴퍼니', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
+                      Text(isSchool.value ? '8,176,349원' : '976,238원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
                     ],)),
                     Obx(() => Column(children: [
-                      Image.asset('assets/images/rank/1.png', width: 96),
+                      Image.asset(isSchool.value ? 'assets/images/rank/dimigo.png' : 'assets/images/rank/1.png', width: 96),
                       const SizedBox(height: 16),
-                      Text(isSchool.value ? '한국디지털미디어고' : '엑슨컴퍼니', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
-                      Text(isSchool.value ? '9,264,137원' : '976,238원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
+                      Text(isSchool.value ? '한국디지털미디어고' : '형석킴더스트리', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
+                      Text(isSchool.value ? '9,264,137원' : '1,869,266원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)
                     ],)),
                     Obx(() => Column(children: [
                       SizedBox(height: 18,),
-                      Image.asset('assets/images/rank/3.png', width: 80),
+                      Image.asset(isSchool.value ? 'assets/images/rank/sema.png' : 'assets/images/rank/3.png', width: 80),
                       const SizedBox(height: 16),
                       Text(isSchool.value ? '세모중학교' : '아이고배야', style: TextStyle(fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500)),
                       Text(isSchool.value ? '7,120,289원' : '920,382원', style: TextStyle(color: Color(0xFF848484), fontSize: 16, fontFamily: 'SUITE', fontWeight: FontWeight.w500, height: 0,),)

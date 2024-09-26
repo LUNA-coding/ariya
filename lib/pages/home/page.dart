@@ -116,62 +116,6 @@ class HomePage extends GetView<HomePageController> {
                 ),
                 Container(
                   width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(999),
-                    color: const Color.fromRGBO(245, 245, 245, 1),
-                  ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            '순자산',
-                            style: TextStyle(fontSize: 18, color: Color.fromRGBO(133, 133, 133, 1), fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        '203,984원',
-                        style: TextStyle(fontSize: 18, color: Color.fromRGBO(133, 133, 133, 1), fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 11,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(999),
-                    color: const Color.fromRGBO(245, 245, 245, 1),
-                  ),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            '주식 보유금',
-                            style: TextStyle(fontSize: 18, color: Color.fromRGBO(133, 133, 133, 1), fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        '675,124원',
-                        style: TextStyle(fontSize: 18, color: Color.fromRGBO(133, 133, 133, 1), fontWeight: FontWeight.w600),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 11,
-                ),
-                Container(
-                  width: double.infinity,
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(999),
@@ -204,6 +148,49 @@ class HomePage extends GetView<HomePageController> {
                         ),
                         child: const Text(
                           '11.29%',
+                          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 11,
+                ),
+                Container(
+                  width: double.infinity,
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(999),
+                    color: const Color.fromRGBO(245, 245, 245, 1),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          SvgPicture.asset(
+                            'assets/icons/up.svg',
+                            width: 24,
+                            height: 24,
+                          ),
+                          const SizedBox(
+                            width: 12,
+                          ),
+                          const Text(
+                            '학교 랭킹',
+                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(999),
+                          color: const Color.fromRGBO(54, 54, 54, 1),
+                        ),
+                        child: const Text(
+                          '6위',
                           style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
                         ),
                       )
