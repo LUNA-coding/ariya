@@ -28,8 +28,8 @@ class CustomNavigationBar extends StatelessWidget {
           currentIndex: currentIndex,
           selectedItemColor: selectedColor,
           unselectedItemColor: defaultColor,
-          selectedLabelStyle: const TextStyle(fontSize: 12, color: selectedColor),
-          unselectedLabelStyle: const TextStyle(fontSize: 12, color: defaultColor),
+          selectedLabelStyle: const TextStyle(fontSize: 12, color: Colors.black),
+          unselectedLabelStyle: const TextStyle(fontSize: 12, color: Colors.grey),
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
