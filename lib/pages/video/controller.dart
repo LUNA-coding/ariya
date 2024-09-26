@@ -52,12 +52,14 @@ class VideoPageController extends GetxController with ButtonController {
   final RxString _quizAnswer = ''.obs;
   final Rx<bool?> _quizStatus = Rx(null);
   final Rx<Widget> quiz = _quiz_list[0].obs;
+  final RxDouble _process = 0.0.obs;
 
   String get quizAnswer => _quizAnswer.value;
   bool get isQuizTime => _isQuizTime.value;
   bool get isQuizSolved => _quizStatus.value != null;
   bool get isQuizCorrect => _quizStatus.value == true;
   bool get isQuizInCorrect => _quizStatus.value == false;
+  get process => _process.value;
 
   set quizAnswer(String value) => _quizAnswer.value = value;
 
@@ -73,6 +75,7 @@ class VideoPageController extends GetxController with ButtonController {
     Timer(const Duration(seconds: 2), () {
       _refreshQuiz();
       _quizIndex.value++;
+      _process.value += (1/_quiz_list.length);
       if (_quizIndex.value >= _quiz_list.length) {
         Get.offAll(const QuizResult(point: 100));
         return;

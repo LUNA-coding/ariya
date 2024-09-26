@@ -9,6 +9,12 @@ import 'package:ariya/pages/video/controller.dart';
 class VideoPage extends GetView<VideoPageController> {
   const VideoPage({super.key});
 
+    String formatDuration(int totalSeconds) {
+      int minutes = totalSeconds ~/ 60; // 분 계산
+      int seconds = totalSeconds % 60;  // 초 계산
+      return '$minutes:${seconds.toString().padLeft(2, '0')}';
+    }
+
   @override
   Widget build(BuildContext context) {
     YoutubePlayerController controller = YoutubePlayerController(
@@ -18,6 +24,11 @@ class VideoPage extends GetView<VideoPageController> {
         mute: false,
       ),
     );
+
+    var seconds = 0.obs;
+    var _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      seconds.value++;
+    });
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -32,15 +43,15 @@ class VideoPage extends GetView<VideoPageController> {
                 Icons.close_rounded,
                 color: Color.fromRGBO(79, 79, 79, 1),
               ),
-              LinearPercentIndicator(
+              Obx(() => LinearPercentIndicator(
                 lineHeight: 8.0,
                 animationDuration: 1000,
-                percent: 0.6,
+                percent: VideoPageController.to.process,
                 barRadius: const Radius.circular(99),
                 progressColor: const Color.fromRGBO(156, 112, 213, 1),
                 backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
                 width: 220,
-              ),
+              )),
               Container(
                 width: 52,
                 height: 32,
@@ -52,15 +63,15 @@ class VideoPage extends GetView<VideoPageController> {
                     borderRadius: BorderRadius.circular(7.68),
                   ),
                 ),
-                child: const Column(
+                child: Column(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      child: Text(
-                        '4:33',
+                      child: Obx(() => Text(
+                         formatDuration(seconds.value),
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           color: Color(0xFF4F4F4F),
@@ -70,7 +81,7 @@ class VideoPage extends GetView<VideoPageController> {
                           height: 0,
                           letterSpacing: -0.48,
                         ),
-                      ),
+                      )),
                     ),
                   ],
                 ),
