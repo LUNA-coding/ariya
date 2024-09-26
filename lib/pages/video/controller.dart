@@ -5,14 +5,15 @@ import 'dart:async';
 
 import 'package:ariya/pages/video/widgets/ox_quiz.dart';
 import 'package:ariya/widgets/button_controller.dart';
-import 'package:ariya/routes/routes.dart';
 
 class VideoPageController extends GetxController with ButtonController {
   static VideoPageController get to => Get.find<VideoPageController>();
-  static const List<Widget> _quiz_list = [
+  static final List<Widget> _quiz_list = [
     OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'O'),
-    OxQuiz(question: "2", answer: 'X'),
-    OxQuiz(question: "1", answer: 'X'),
+    OxQuiz(question: "채권의 수익은\n‘이자'라는 형태로\n발생한다.", answer: 'X'),
+    OxQuiz(question: "주식과 채권은 모두\n투자 상품이다.\n", answer: 'X'),
+    OxQuiz(question: "‘채권 매수'란,\n회사에 돈을\n빌려주는 것을 말한다.", answer: 'X'),
+    OxQuiz(question: "‘주식’은\n회사의 소유권을\n나타낸다.", answer: 'X'),
   ];
 
   final RxInt _quizIndex = 0.obs;
@@ -41,7 +42,7 @@ class VideoPageController extends GetxController with ButtonController {
       _refreshQuiz();
       _quizIndex.value++;
       if (_quizIndex.value >= _quiz_list.length) {
-        Get.to(const QuizResult(point: 100));
+        Get.offAll(const QuizResult(point: 100));
         return;
       }
       quiz.value = _quiz_list[_quizIndex.value];

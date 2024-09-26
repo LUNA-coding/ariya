@@ -1,5 +1,3 @@
-import 'package:ariya/pages/video/widgets/quiz.dart';
-import 'package:ariya/pages/video/widgets/quiz_result.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +5,6 @@ import 'package:get/get.dart';
 
 import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/video/controller.dart';
-
-import 'widgets/ox_quiz.dart';
-
-const quiz_list = [];
 
 class VideoPage extends GetView<VideoPageController> {
   const VideoPage({super.key});
@@ -106,7 +100,11 @@ class VideoPage extends GetView<VideoPageController> {
                   ),
                 ]),
               )
-            : VideoPageController.to.quiz.value,
+            // : VideoPageController.to.quiz.value,
+            : AnimatedSwitcher(
+                duration: const Duration(milliseconds: 250),
+                child: VideoPageController.to.quiz.value,
+              ),
       ),
       bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
     );

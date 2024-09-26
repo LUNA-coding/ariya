@@ -45,7 +45,7 @@ class OxQuizButton extends StatelessWidget {
 }
 
 class OxQuiz extends StatelessWidget {
-  const OxQuiz({super.key, required this.question, required this.answer});
+  OxQuiz({Key? key, required this.question, required this.answer}) : super(key: key ?? ValueKey(question));
 
   static const String _title = "OX 퀴즈";
 
@@ -55,6 +55,7 @@ class OxQuiz extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      key: ValueKey(question),
       height: double.infinity,
       width: double.infinity,
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
