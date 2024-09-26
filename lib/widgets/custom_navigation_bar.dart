@@ -28,8 +28,8 @@ class CustomNavigationBar extends StatelessWidget {
           currentIndex: currentIndex,
           selectedItemColor: selectedColor,
           unselectedItemColor: defaultColor,
-          selectedLabelStyle: const TextStyle(fontSize: 12),
-          unselectedLabelStyle: const TextStyle(fontSize: 12),
+          selectedLabelStyle: const TextStyle(fontSize: 12, color: selectedColor),
+          unselectedLabelStyle: const TextStyle(fontSize: 12, color: defaultColor),
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
@@ -41,11 +41,11 @@ class CustomNavigationBar extends StatelessWidget {
               label: '투자',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.payments_rounded, size: 28, color: Get.currentRoute == '/video' ? selectedColor : defaultColor),
-              label: '은행',
+              icon: Icon(Icons., size: 28, color: Get.currentRoute == '/video' ? selectedColor : defaultColor),
+              label: '퀴즈',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.star_rounded, size: 28, color: Get.currentRoute == '/ranking' ? selectedColor : defaultColor),
+              icon: Icon(Icons.star_rounded, size: 28, color: Get.currentRoute == '/rank' ? selectedColor : defaultColor),
               label: '랭킹',
             ),
           ],
