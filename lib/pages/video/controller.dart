@@ -1,3 +1,4 @@
+import 'package:ariya/pages/video/widgets/quiz_result.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:async';
@@ -40,7 +41,7 @@ class VideoPageController extends GetxController with ButtonController {
       _refreshQuiz();
       _quizIndex.value++;
       if (_quizIndex.value >= _quiz_list.length) {
-        Get.offAndToNamed(Routes.HOME);
+        Get.to(const QuizResult(point: 100));
         return;
       }
       quiz.value = _quiz_list[_quizIndex.value];
