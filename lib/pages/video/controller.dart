@@ -52,6 +52,7 @@ class VideoPageController extends GetxController with ButtonController {
   final RxString _quizAnswer = ''.obs;
   final Rx<bool?> _quizStatus = Rx(null);
   final Rx<Widget> quiz = _quiz_list[0].obs;
+  final RxBool isVideoDown = false.obs;
 
   String get quizAnswer => _quizAnswer.value;
   bool get isQuizTime => _isQuizTime.value;

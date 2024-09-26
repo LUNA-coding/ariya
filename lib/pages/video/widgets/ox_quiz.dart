@@ -80,8 +80,8 @@ class OxQuiz extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       key: ValueKey(question),
-      height: double.infinity,
       width: double.infinity,
+      height: double.infinity,
       padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
       child: Column(
         mainAxisSize: MainAxisSize.max,
