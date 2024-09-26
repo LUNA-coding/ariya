@@ -462,7 +462,7 @@ class HomePage extends GetView<HomePageController> {
           ),
         ]),
       ),
-      bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
+      bottomNavigationBar: const CustomNavigationBar(initialIndex: 0),
     );
   }
 }

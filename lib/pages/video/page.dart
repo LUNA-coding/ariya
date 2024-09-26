@@ -39,7 +39,7 @@ class VideoPage extends GetView<VideoPageController> {
                 barRadius: const Radius.circular(99),
                 progressColor: const Color.fromRGBO(156, 112, 213, 1),
                 backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
-                width: 240,
+                width: 220,
               ),
               Container(
                 width: 52,
@@ -106,7 +106,7 @@ class VideoPage extends GetView<VideoPageController> {
                 child: VideoPageController.to.quiz.value,
               ),
       ),
-      bottomNavigationBar: const CustomNavigationBar(currentIndex: 0),
+      bottomNavigationBar: const CustomNavigationBar(initialIndex: 2),
     );
   }
 }

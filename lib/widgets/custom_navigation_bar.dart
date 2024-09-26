@@ -1,28 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:ariya/routes/routes.dart';
 
-class CustomNavigationBar extends StatelessWidget {
-  const CustomNavigationBar({super.key, required this.currentIndex});
+class CustomNavigationBar extends StatefulWidget {
+  const CustomNavigationBar({super.key, required this.initialIndex});
 
-  final int currentIndex;
+  final int initialIndex;
+
+  @override
+  _CustomNavigationBarState createState() => _CustomNavigationBarState();
+}
+
+class _CustomNavigationBarState extends State<CustomNavigationBar> {
+  late int currentIndex; // 상태로 currentIndex 관리
+
   static Color defaultColor = const Color.fromRGBO(184, 184, 184, 1.0);
   static Color selectedColor = const Color.fromRGBO(54, 54, 54, 1.0);
 
   @override
+  void initState() {
+    super.initState();
+    currentIndex = widget.initialIndex; // 초기 상태 설정
+  }
+
+  void _onItemTapped(int index) {
+    if (currentIndex != index) {
+      setState(() {
+        currentIndex = index;
+      });
+      switch (index) {
+        case 0:
+          Get.offAndToNamed(Routes.HOME);
+          break;
+        case 1:
+          Get.offAndToNamed(Routes.INVEST);
+          break;
+        case 2:
+          Get.offAndToNamed(Routes.VIDEO);
+          break;
+        case 3:
+          Get.offAndToNamed(Routes.RANK);
+          break;
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: const Color.fromRGBO(184, 184, 184, 1.0), width: 0.5),
-      ),
-      // height: 70.0, // BottomNavigationBar의 높이 조정
+      // ... 기존 데코레이션 코드
       child: ClipRRect(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(20.0),
-          topRight: Radius.circular(20.0),
-        ),
+        // ... 기존 borderRadius 코드
         child: BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: currentIndex,
@@ -33,38 +61,23 @@ class CustomNavigationBar extends StatelessWidget {
           type: BottomNavigationBarType.fixed,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.house_rounded, size: 28, color: Get.currentRoute == '/home' ? selectedColor : defaultColor),
-              label: '랭킹',
+              icon: Icon(Icons.house_rounded, size: 28),
+              label: '홈',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.bar_chart_rounded, size: 28, color: Get.currentRoute == '/invest' ? selectedColor : defaultColor),
+              icon: Icon(Icons.bar_chart_rounded, size: 28),
               label: '투자',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.quiz_rounded, size: 28, color: Get.currentRoute == '/video' ? selectedColor : defaultColor),
+              icon: Icon(Icons.quiz_rounded, size: 28),
               label: '퀴즈',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.star_rounded, size: 28, color: Get.currentRoute == '/rank' ? selectedColor : defaultColor),
+              icon: Icon(Icons.star_rounded, size: 28),
               label: '랭킹',
             ),
           ],
-          onTap: (int index) {
-            switch (index) {
-              case 0:
-                Get.offAndToNamed(Routes.HOME);
-                break;
-              case 1:
-                Get.offAndToNamed(Routes.INVEST);
-                break;
-              case 2:
-                Get.offAndToNamed(Routes.VIDEO);
-                break;
-              case 3:
-                Get.offAndToNamed(Routes.RANK);
-                break;
-            }
-          },
+          onTap: _onItemTapped,
         ),
       ),
     );
