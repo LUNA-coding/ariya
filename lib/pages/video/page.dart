@@ -54,7 +54,7 @@ class VideoPage extends GetView<VideoPageController> {
                 width: 220,
               )),
               Container(
-                width: 52,
+                width: 70,
                 height: 32,
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
                 clipBehavior: Clip.antiAlias,
