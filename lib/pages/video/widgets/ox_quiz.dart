@@ -2,9 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import 'package:ariya/pages/video/widgets/quiz_title.dart';
 import 'package:ariya/pages/video/controller.dart';
 import 'package:ariya/global.dart';
+
+class OxQuizTitle extends StatelessWidget {
+  const OxQuizTitle({super.key, required this.title, required this.question});
+
+  final String title;
+  final String question;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            const Icon(Icons.star_rounded, size: 24, color: AriyaColor.purple),
+            const SizedBox(width: 4),
+            Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AriyaColor.purple, letterSpacing: -0.03)),
+          ],
+        ),
+        const SizedBox(width: 8),
+        Text(question, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w600, letterSpacing: -0.02)),
+      ],
+    );
+  }
+}
 
 class OxQuizButton extends StatelessWidget {
   const OxQuizButton({super.key, required this.image, required this.correctColor, required this.incorrectColor, required this.onPressed});
@@ -64,7 +88,7 @@ class OxQuiz extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const SizedBox(height: 8),
-          QuizTitle(title: _title, question: question),
+          OxQuizTitle(title: _title, question: question),
           const SizedBox(height: 60),
           Row(
             mainAxisSize: MainAxisSize.max,
