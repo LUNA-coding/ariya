@@ -267,28 +267,24 @@ class HomePage extends GetView<HomePageController> {
                           ? CarouselSlider(
                               items: HomePageController.to.cards
                                   .map((c) => Container(
-                                        height: 200,
-                                        width: 300,
-                                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                                        decoration: BoxDecoration(
-                                          color: const Color.fromRGBO(156, 112, 213, 1),
-                                          borderRadius: BorderRadius.circular(16),
-                                        ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
-                                          Text(
-                                            c,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 24,
-                                              fontFamily: 'SUITE',
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                      height: 200,
+                                      width: 300,
+                                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                                      decoration: BoxDecoration(
+                                        color: const Color.fromRGBO(156, 112, 213, 1),
+                                        borderRadius: BorderRadius.circular(16),
+                                      ),
+                                      child: Column(mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                        Text(
+                                          c,
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 24,
+                                            fontFamily: 'SUITE',
+                                            fontWeight: FontWeight.w600,
                                           ),
-                                        ])
-                                      ))
+                                        ),
+                                      ])))
                                   .toList(),
                               options: CarouselOptions(
                                 autoPlay: false,
