@@ -115,7 +115,7 @@ class VideoPage extends GetView<VideoPageController> {
           Obx(
             () => AnimatedPositioned(
               //숫자 조정 해주세요
-              top: VideoPageController.to.isVideoDown.value ? 650 : 0,
+              top: VideoPageController.to.isVideoDown.value ? MediaQuery.of(context).size.height - 125 : 0,
               curve: Curves.easeIn,
               duration: const Duration(milliseconds: 250),
               child: Container(
@@ -131,24 +131,27 @@ class VideoPage extends GetView<VideoPageController> {
                 clipBehavior: Clip.antiAlias,
                 child: Column(
                   children: [
-                    GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: () => VideoPageController.to.isVideoDown.value = !VideoPageController.to.isVideoDown.value,
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(VideoPageController.to.isVideoDown.value ? '영상 다시 보기' : '문제 풀러 가기',
-                                style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w400, letterSpacing: -0.3, color: AriyaColor.white)),
-                            Icon(VideoPageController.to.isVideoDown.value ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded, color: AriyaColor.white),
-                          ],
+                    SizedBox(
+                      height: 75,
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: () => VideoPageController.to.isVideoDown.value = !VideoPageController.to.isVideoDown.value,
+                        child: Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text(VideoPageController.to.isVideoDown.value ? '영상 다시 보기' : '문제 풀러 가기',
+                                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w400, letterSpacing: -0.3, color: AriyaColor.white)),
+                              Icon(VideoPageController.to.isVideoDown.value ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded, color: AriyaColor.white),
+                            ],
+                          ),
                         ),
                       ),
                     ),
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height - 150,
+                      height: MediaQuery.of(context).size.height - 75,
                       child: AspectRatio(
                         aspectRatio: 9 / 16,
                         child: YoutubePlayer(
