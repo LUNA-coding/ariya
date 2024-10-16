@@ -22,7 +22,7 @@ class VideoPageController extends GetxController with ButtonController {
     ),
     SelectQuiz(
       question: "당신은 안전한 투자를 중요하게 생각\n하는 투자자입니다. 다음 중 어떤 투자\n포트폴리오를 구성해야할까요?",
-      answer: 1,
+      answer: 2,
       choice: const ["주식:채권 = 7:3", "주식:채권 = 3:7"],
       image: [
         SvgPicture.asset('assets/images/quiz/seven_to_three.svg', height: 76, width: 76),

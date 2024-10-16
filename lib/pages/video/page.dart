@@ -106,7 +106,7 @@ class VideoPage extends GetView<VideoPageController> {
           Obx(
             () => AnimatedPositioned(
               //숫자 조정 해주세요
-              top: VideoPageController.to.isVideoDown.value ? 650 : 0,
+              top: VideoPageController.to.isVideoDown.value ? 720 : 0,
               curve: Curves.easeIn,
               duration: const Duration(milliseconds: 250),
               child: Container(
