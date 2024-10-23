@@ -23,27 +23,28 @@
 //     currentIndex = widget.initialIndex; // 초기 상태 설정
 //   }
 
-//   void _onItemTapped(int index) {
-//     if (currentIndex != index) {
-//       setState(() {
-//         currentIndex = index;
-//       });
-//       switch (index) {
-//         case 0:
-//           Get.offAndToNamed(Routes.HOME);
-//           break;
-//         case 1:
-//           Get.offAndToNamed(Routes.INVEST);
-//           break;
-//         case 2:
-//           Get.offAndToNamed(Routes.VIDEO);
-//           break;
-//         case 3:
-//           Get.offAndToNamed(Routes.RANK);
-//           break;
-//       }
-//     }
-//   }
+
+  void _onItemTapped(int index) {
+    if (currentIndex != index) {
+      setState(() {
+        currentIndex = index;
+      });
+      switch (index) {
+        case 0:
+          Get.offAndToNamed(Routes.HOME);
+          break;
+        case 1:
+          Get.offAndToNamed(Routes.INVEST);
+          break;
+        case 2:
+          Get.offAndToNamed(Routes.VIDEO1);
+          break;
+        case 3:
+          Get.offAndToNamed(Routes.RANK);
+          break;
+      }
+    }
+  }
 
 //   @override
 //   Widget build(BuildContext context) {

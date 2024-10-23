@@ -31,9 +31,21 @@ class AppPages {
       transition: Transition.noTransition,
     ),
     GetPage(
-      name: Routes.VIDEO,
+      name: Routes.VIDEO1,
       page: () => VideoPage(),
-      binding: VideoPageBinding(),
+      binding: VideoPageBinding(0),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: Routes.VIDEO2,
+      page: () => VideoPage(),
+      binding: VideoPageBinding(1),
+      transition: Transition.noTransition,
+    ),
+    GetPage(
+      name: Routes.VIDEO3,
+      page: () => VideoPage(),
+      binding: VideoPageBinding(2),
       transition: Transition.noTransition,
     ),
   ];
