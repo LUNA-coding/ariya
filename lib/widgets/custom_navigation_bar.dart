@@ -36,7 +36,7 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
           Get.offAndToNamed(Routes.INVEST);
           break;
         case 2:
-          Get.offAndToNamed(Routes.VIDEO);
+          Get.offAndToNamed(Routes.VIDEO1);
           break;
         case 3:
           Get.offAndToNamed(Routes.RANK);

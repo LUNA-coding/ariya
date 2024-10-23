@@ -9,6 +9,12 @@ import 'package:ariya/pages/video/widgets/ox_quiz.dart';
 import 'package:ariya/widgets/button_controller.dart';
 
 class VideoPageController extends GetxController with ButtonController {
+  int index = 0;
+
+  VideoPageController(int index) {
+    this.index = index;
+  }
+
   static VideoPageController get to => Get.find<VideoPageController>();
   static final List<List<Widget>> _quiz_list = [
     [
@@ -37,8 +43,6 @@ class VideoPageController extends GetxController with ButtonController {
         image: [
           Image.asset('assets/images/quiz/stock.png', height: 76, width: 76),
           Image.asset('assets/images/quiz/bond.png', height: 76, width: 76),
-          // SvgPicture.asset('assets/images/quiz/stock.svg', height: 76, width: 76),
-          // SvgPicture.asset('assets/images/quiz/bond.svg', height: 76, width: 76),
         ],
       ),
       OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'X'),
@@ -148,14 +152,11 @@ class VideoPageController extends GetxController with ButtonController {
 
   static const int maxScore = 100;
 
-  
-  static int quizNumber = 2;
-
   final RxInt _quizIndex = 0.obs;
   // final RxBool _isQuizTime = false.obs;
   final RxString _quizAnswer = ''.obs;
   final Rx<bool?> _quizStatus = Rx(null);
-  final Rx<Widget> quiz = _quiz_list[quizNumber][0].obs;
+  late Rx<Widget> quiz = _quiz_list[index][0].obs;
   final RxDouble _process = 0.0.obs;
   final RxBool isVideoDown = false.obs;
   final RxDouble _score = 0.0.obs;
@@ -180,19 +181,19 @@ class VideoPageController extends GetxController with ButtonController {
     _quizAnswer.value = key;
     Timer(const Duration(seconds: 2), () {
       if (_quizStatus.value ?? false) {
-        _score.value += (maxScore / _quiz_list[quizNumber].length);
+        _score.value += (maxScore / _quiz_list[index].length);
       }
 
       _refreshQuiz();
       _quizIndex.value++;
-      _process.value += (1 / _quiz_list[quizNumber].length);
+      _process.value += (1 / _quiz_list[index].length);
       
-      if (_quizIndex.value >= _quiz_list[quizNumber].length) {
+      if (_quizIndex.value >= _quiz_list[index].length) {
         Get.offAll(QuizResult(point: _score.value.toInt()));
         return;
       }
-      quiz.value = _quiz_list[quizNumber][_quizIndex.value];
-      Get.put(VideoPageController());
+      quiz.value = _quiz_list[index][_quizIndex.value];
+      Get.put(VideoPageController(index));
     });
   }
 }

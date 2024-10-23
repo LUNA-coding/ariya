@@ -269,8 +269,11 @@ class HomePage extends GetView<HomePageController> {
                       ),
                       (HomePageController.to.isOpened[0])
                           ? CarouselSlider(
-                              items: HomePageController.to.cards[0]
-                                  .map((c) => Container(
+                              items: HomePageController.to.cards[0].asMap().entries
+                                  .map((entry) {
+                                      int index = entry.key;
+                                      String value = entry.value;
+                                      return GestureDetector(child: Container(
                                         height: 200,
                                         width: 300,
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -283,7 +286,7 @@ class HomePage extends GetView<HomePageController> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
                                           Text(
-                                            c,
+                                            value,
                                             style: TextStyle(
                                               color: Colors.white,
                                               fontSize: 24,
@@ -292,7 +295,11 @@ class HomePage extends GetView<HomePageController> {
                                             ),
                                           ),
                                         ])
-                                      ))
+                                      ), onTap: () {
+                                        Get.toNamed('/video${index+1}');
+                                      });
+                                      }
+                                    )
                                   .toList(),
                               options: CarouselOptions(
                                 autoPlay: false,
