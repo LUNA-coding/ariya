@@ -39,60 +39,69 @@ class VideoPage extends GetView<VideoPageController> {
         scrolledUnderElevation: 0,
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-          child: Column(children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              GestureDetector(
-                onTap: () => Get.offAllNamed(Routes.HOME),
-                child: const Icon(
-                  Icons.close_rounded,
-                  color: Color.fromRGBO(79, 79, 79, 1),
-                ),
-              ),
-              Obx(() => LinearPercentIndicator(
-                    lineHeight: 8.0,
-                    animationDuration: 1000,
-                    percent: VideoPageController.to.process,
-                    barRadius: const Radius.circular(99),
-                    progressColor: const Color.fromRGBO(156, 112, 213, 1),
-                    backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
-                    width: 220,
-                  )),
-              Container(
-                width: 70,
-                height: 32,
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFF4F4F4),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7.68),
-                  ),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: Obx(() => Text(
-                            formatDuration(seconds.value),
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              color: Color(0xFF4F4F4F),
-                              fontSize: 16,
-                              fontFamily: 'Spoqa Han Sans Neo',
-                              fontWeight: FontWeight.w500,
-                              height: 0,
-                              letterSpacing: -0.48,
-                            ),
-                          )),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  GestureDetector(
+                    onTap: () => Get.offAllNamed(Routes.HOME),
+                    child: const Icon(
+                      Icons.close_rounded,
+                      color: Color.fromRGBO(79, 79, 79, 1),
                     ),
-                  ],
-                ),
-              )
-            ]),
-          ]),
+                  ),
+                  Obx(
+                    () => LinearPercentIndicator(
+                      lineHeight: 8.0,
+                      animationDuration: 1000,
+                      percent: VideoPageController.to.process,
+                      barRadius: const Radius.circular(99),
+                      progressColor: const Color.fromRGBO(156, 112, 213, 1),
+                      backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
+                      width: 220,
+                    ),
+                  ),
+                  Container(
+                    width: 70,
+                    height: 32,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    clipBehavior: Clip.antiAlias,
+                    decoration: ShapeDecoration(
+                      color: const Color(0xFFF4F4F4),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(7.68),
+                      ),
+                    ),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: double.infinity,
+                          child: Obx(
+                            () => Text(
+                              formatDuration(seconds.value),
+                              textAlign: TextAlign.center,
+                              style: const TextStyle(
+                                color: Color(0xFF4F4F4F),
+                                fontSize: 16,
+                                fontFamily: 'Spoqa Han Sans Neo',
+                                fontWeight: FontWeight.w500,
+                                height: 0,
+                                letterSpacing: -0.48,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
       body: Stack(
@@ -106,7 +115,7 @@ class VideoPage extends GetView<VideoPageController> {
           Obx(
             () => AnimatedPositioned(
               //숫자 조정 해주세요
-              top: VideoPageController.to.isVideoDown.value ? 720 : 0,
+              top: VideoPageController.to.isVideoDown.value ? MediaQuery.of(context).size.height - 125 : 0,
               curve: Curves.easeIn,
               duration: const Duration(milliseconds: 250),
               child: Container(
@@ -120,24 +129,10 @@ class VideoPage extends GetView<VideoPageController> {
                   ),
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: Stack(
+                child: Column(
                   children: [
                     SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: MediaQuery.of(context).size.height - 150,
-                      child: AspectRatio(
-                        aspectRatio: 9 / 16,
-                        child: YoutubePlayer(
-                          controller: controller,
-                          showVideoProgressIndicator: true,
-                          progressIndicatorColor: Colors.amber,
-                          onEnded: (_) {
-                            VideoPageController.to.isVideoDown.value = true;
-                          },
-                        ),
-                      ),
-                    ),
-                    Positioned(
+                      height: 75,
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
                         onTap: () => VideoPageController.to.isVideoDown.value = !VideoPageController.to.isVideoDown.value,
@@ -153,7 +148,22 @@ class VideoPage extends GetView<VideoPageController> {
                           ),
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: MediaQuery.of(context).size.height - 75,
+                      child: AspectRatio(
+                        aspectRatio: 9 / 16,
+                        child: YoutubePlayer(
+                          controller: controller,
+                          showVideoProgressIndicator: true,
+                          progressIndicatorColor: Colors.amber,
+                          onEnded: (_) {
+                            VideoPageController.to.isVideoDown.value = true;
+                          },
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),
