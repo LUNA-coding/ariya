@@ -96,38 +96,42 @@ class HomePage extends GetView<HomePageController> {
                     ),
                   ),
                   const SizedBox(height: 11),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(999),
-                      color: const Color.fromRGBO(245, 245, 245, 1),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            // SvgPicture.asset('assets/icons/up.svg', width: 24, height: 24),
-                            const SizedBox(width: 12),
-                            const Text('학교 랭킹', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
-                            const SizedBox(width: 6),
-                            Container(
-                              height: 26,
-                              alignment: Alignment.bottomCenter,
-                              child: const Text('눌러서 자세히 보기', style: TextStyle(fontSize: 12, color: Color.fromARGB(100, 0, 0, 0), fontWeight: FontWeight.w400)),
-                            ),
-                          ],
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(999),
-                            color: const Color.fromRGBO(54, 54, 54, 1),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed('/rank');
+                    },
+                    child: Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(999),
+                        color: const Color.fromRGBO(245, 245, 245, 1),
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Row(
+                            children: [
+                              const SizedBox(width: 12),
+                              const Text('학교 랭킹', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                              const SizedBox(width: 6),
+                              Container(
+                                height: 26,
+                                alignment: Alignment.bottomCenter,
+                                child: const Text('눌러서 자세히 보기', style: TextStyle(fontSize: 12, color: Color.fromARGB(100, 0, 0, 0), fontWeight: FontWeight.w400)),
+                              ),
+                            ],
                           ),
-                          child: const Text('6위', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600)),
-                        )
-                      ],
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(999),
+                              color: const Color.fromRGBO(54, 54, 54, 1),
+                            ),
+                            child: const Text('6위', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600)),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -163,40 +167,38 @@ class HomePage extends GetView<HomePageController> {
                                   onTap: () => HomePageController.to.isOpened[0] = !HomePageController.to.isOpened[0],
                                   child: SvgPicture.asset(HomePageController.to.isOpened[0] == true ? 'assets/icons/up_purple.svg' : 'assets/icons/down.svg', width: 28, height: 28),
                                 ),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          const Text(
-                            '62% 진행됨',
-                            style: TextStyle(fontSize: 16, color: Color(0x46FFFFFF), fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          LinearPercentIndicator(
-                            animation: true,
-                            lineHeight: 3.0,
-                            animationDuration: 1000,
-                            percent: 0.6,
-                            barRadius: const Radius.circular(99),
-                            progressColor: Colors.white,
-                            backgroundColor: const Color.fromRGBO(156, 112, 213, 1),
-                          )
-                        ]),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      (HomePageController.to.isOpened[0])
-                          ? CarouselSlider(
-                              items: HomePageController.to.cards[0].asMap().entries
-                                  .map((entry) {
-                                      int index = entry.key;
-                                      String value = entry.value;
-                                      return GestureDetector(child: Container(
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            const Text(
+                              '62% 진행됨',
+                              style: TextStyle(fontSize: 16, color: Color(0x46FFFFFF), fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              height: 12,
+                            ),
+                            LinearPercentIndicator(
+                              animation: true,
+                              lineHeight: 3.0,
+                              animationDuration: 1000,
+                              percent: 0.6,
+                              barRadius: const Radius.circular(99),
+                              progressColor: Colors.white,
+                              backgroundColor: const Color.fromRGBO(156, 112, 213, 1),
+                            )
+                          ]),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        (HomePageController.to.isOpened[0])
+                            ? CarouselSlider(
+                                items: HomePageController.to.cards[0].asMap().entries.map(
+                                  (entry) {
+                                    int index = entry.key;
+                                    String value = entry.value;
+                                    return GestureDetector(
+                                      child: Container(
                                         height: 200,
                                         width: 300,
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -204,37 +206,38 @@ class HomePage extends GetView<HomePageController> {
                                           color: const Color.fromRGBO(156, 112, 213, 1),
                                           borderRadius: BorderRadius.circular(16),
                                         ),
-                                        child: Column(mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start, children: [
-                                          Text(
-                                            value,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 24,
-                                              fontFamily: 'SUITE',
-                                              fontWeight: FontWeight.w600,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              value,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24,
+                                                fontFamily: 'SUITE',
+                                                fontWeight: FontWeight.w600,
+                                              ),
                                             ),
-                                          ),
-                                        ])
-                                      ), onTap: () {
-                                        Get.toNamed('/video${index+1}');
-                                      });
-                                      }
-                                    )
-                                  .toList(),
-                              options: CarouselOptions(
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 0.7,
-                                aspectRatio: 2.0,
-                                initialPage: 2,
-                              ),
-                        (HomePageController.to.isOpened[0])
-                            ? const SizedBox(
-                                height: 24,
+                                          ],
+                                        ),
+                                      ),
+                                      onTap: () {
+                                        Get.toNamed('/video${index + 1}');
+                                      },
+                                    );
+                                  },
+                                ).toList(),
+                                options: CarouselOptions(
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 0.7,
+                                  aspectRatio: 2.0,
+                                  initialPage: 2,
+                                ),
                               )
-                            : const SizedBox(
-                                height: 0,
-                              ),
+                            : const SizedBox(height: 0),
+                        (HomePageController.to.isOpened[0]) ? const SizedBox(height: 24) : const SizedBox(height: 0),
                       ],
                     )))),
             const SizedBox(
