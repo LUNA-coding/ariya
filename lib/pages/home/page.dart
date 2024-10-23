@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
-import 'package:ariya/widgets/custom_navigation_bar.dart';
 import 'package:ariya/pages/home/controller.dart';
 
 class HomePage extends GetView<HomePageController> {
@@ -47,230 +46,146 @@ class HomePage extends GetView<HomePageController> {
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Container(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: [
-                    Text(
-                      '단단무지',
-                      style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w600),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Row(
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text('단단무지', style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w600)),
+                      Text('님, 오늘도 화이팅!🔥', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w500)),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 18,
+                  ),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(999),
+                      color: const Color.fromRGBO(245, 245, 245, 1),
                     ),
-                    Text(
-                      '님, 오늘도 화이팅!🔥',
-                      style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w500),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Row(
+                          children: [
+                            SizedBox(width: 12),
+                            Text('총 자산', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                          ],
+                        ),
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(999),
+                            color: const Color.fromRGBO(54, 54, 54, 1),
+                          ),
+                          child: const Text(
+                            '879,108원',
+                            style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
+                          ),
+                        )
+                      ],
                     ),
-                  ],
-                ),
-                const SizedBox(
-                  height: 18,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(999),
-                    color: const Color.fromRGBO(245, 245, 245, 1),
                   ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/up.svg',
-                            width: 24,
-                            height: 24,
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          const Text(
-                            '총 자산',
-                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(999),
-                          color: const Color.fromRGBO(54, 54, 54, 1),
+                  const SizedBox(height: 11),
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(999),
+                      color: const Color.fromRGBO(245, 245, 245, 1),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            // SvgPicture.asset('assets/icons/up.svg', width: 24, height: 24),
+                            const SizedBox(width: 12),
+                            const Text('학교 랭킹', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                            const SizedBox(width: 6),
+                            Container(
+                              height: 26,
+                              alignment: Alignment.bottomCenter,
+                              child: const Text('눌러서 자세히 보기', style: TextStyle(fontSize: 12, color: Color.fromARGB(100, 0, 0, 0), fontWeight: FontWeight.w400)),
+                            ),
+                          ],
                         ),
-                        child: const Text(
-                          '879,108원',
-                          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 11,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(999),
-                    color: const Color.fromRGBO(245, 245, 245, 1),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/up.svg',
-                            width: 24,
-                            height: 24,
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(999),
+                            color: const Color.fromRGBO(54, 54, 54, 1),
                           ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          const Text(
-                            '주식 수익률',
-                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(999),
-                          color: const Color.fromRGBO(54, 54, 54, 1),
-                        ),
-                        child: const Text(
-                          '11.29%',
-                          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                      )
-                    ],
+                          child: const Text('6위', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600)),
+                        )
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 11,
-                ),
-                Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(999),
-                    color: const Color.fromRGBO(245, 245, 245, 1),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          SvgPicture.asset(
-                            'assets/icons/up.svg',
-                            width: 24,
-                            height: 24,
-                          ),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          const Text(
-                            '학교 랭킹',
-                            style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-                          ),
-                        ],
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(999),
-                          color: const Color.fromRGBO(54, 54, 54, 1),
-                        ),
-                        child: const Text(
-                          '6위',
-                          style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            )),
-          ),
-          Container(
-            height: 6,
-            width: double.infinity,
-            decoration: const BoxDecoration(color: Color.fromRGBO(235, 235, 235, 1)),
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Obx(() => AnimatedContainer(
-                  duration: const Duration(milliseconds: 500),
-                  curve: Curves.fastOutSlowIn,
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromRGBO(140, 89, 206, 1),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                '주식과 투자',
-                                style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  HomePageController.to.isOpened[0] = !HomePageController.to.isOpened[0];
-                                },
-                                child: SvgPicture.asset(
-                                  'assets/icons/up_purple.svg',
-                                  width: 28,
-                                  height: 28,
+                ],
+              ),
+            ),
+            Container(
+              height: 6,
+              width: double.infinity,
+              color: const Color.fromRGBO(235, 235, 235, 1),
+            ),
+            const SizedBox(height: 24),
+            Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+                child: Obx(() => AnimatedContainer(
+                    duration: const Duration(milliseconds: 500),
+                    curve: Curves.fastOutSlowIn,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color.fromRGBO(140, 89, 206, 1),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text('주식과 투자', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600)),
+                                GestureDetector(
+                                  onTap: () => HomePageController.to.isOpened[0] = !HomePageController.to.isOpened[0],
+                                  child: SvgPicture.asset(HomePageController.to.isOpened[0] == true ? 'assets/icons/up_purple.svg' : 'assets/icons/down.svg', width: 28, height: 28),
                                 ),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          const Text(
-                            '62% 진행됨',
-                            style: TextStyle(fontSize: 16, color: Color(0x46FFFFFF), fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          LinearPercentIndicator(
-                            animation: true,
-                            lineHeight: 3.0,
-                            animationDuration: 1000,
-                            percent: 0.6,
-                            barRadius: const Radius.circular(99),
-                            progressColor: Colors.white,
-                            backgroundColor: const Color.fromRGBO(156, 112, 213, 1),
-                          )
-                        ]),
-                      ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                      (HomePageController.to.isOpened[0])
-                          ? CarouselSlider(
-                              items: HomePageController.to.cards[0]
-                                  .map((c) => Container(
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            const Text('62% 진행됨', style: TextStyle(fontSize: 16, color: Color(0x46FFFFFF), fontWeight: FontWeight.w500)),
+                            const SizedBox(height: 12),
+                            LinearPercentIndicator(
+                              animation: true,
+                              lineHeight: 3.0,
+                              animationDuration: 1000,
+                              percent: 0.6,
+                              barRadius: const Radius.circular(99),
+                              progressColor: Colors.white,
+                              backgroundColor: const Color.fromRGBO(156, 112, 213, 1),
+                            )
+                          ]),
+                        ),
+                        const SizedBox(
+                          height: 4,
+                        ),
+                        (HomePageController.to.isOpened[0])
+                            ? CarouselSlider(
+                                items: HomePageController.to.cards[0]
+                                    .map((c) => Container(
                                         height: 200,
                                         width: 300,
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -278,48 +193,45 @@ class HomePage extends GetView<HomePageController> {
                                           color: const Color.fromRGBO(156, 112, 213, 1),
                                           borderRadius: BorderRadius.circular(16),
                                         ),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.end,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: [
+                                        child: Column(mainAxisAlignment: MainAxisAlignment.end, crossAxisAlignment: CrossAxisAlignment.start, children: [
                                           Text(
                                             c,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                               color: Colors.white,
                                               fontSize: 24,
                                               fontFamily: 'SUITE',
                                               fontWeight: FontWeight.w600,
                                             ),
                                           ),
-                                        ])
-                                      ))
-                                  .toList(),
-                              options: CarouselOptions(
-                                autoPlay: false,
-                                enlargeCenterPage: true,
-                                viewportFraction: 0.7,
-                                aspectRatio: 2.0,
-                                initialPage: 2,
+                                        ])))
+                                    .toList(),
+                                options: CarouselOptions(
+                                  autoPlay: false,
+                                  enlargeCenterPage: true,
+                                  viewportFraction: 0.7,
+                                  aspectRatio: 2.0,
+                                  initialPage: 2,
+                                ),
+                              )
+                            : const SizedBox(
+                                height: 0,
                               ),
-                            )
-                          : const SizedBox(
-                              height: 0,
-                            ),
-                      (HomePageController.to.isOpened[0])
-                          ? const SizedBox(
-                              height: 24,
-                            )
-                          : const SizedBox(
-                              height: 0,
-                            ),
-                    ],
-                  )))),
-          const SizedBox(
-            height: 16,
-          ),
-          Padding(
+                        (HomePageController.to.isOpened[0])
+                            ? const SizedBox(
+                                height: 24,
+                              )
+                            : const SizedBox(
+                                height: 0,
+                              ),
+                      ],
+                    )))),
+            const SizedBox(
+              height: 16,
+            ),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Obx(() => AnimatedContainer(
+              child: Obx(
+                () => AnimatedContainer(
                   duration: const Duration(milliseconds: 500),
                   curve: Curves.fastOutSlowIn,
                   width: double.infinity,
@@ -332,54 +244,49 @@ class HomePage extends GetView<HomePageController> {
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                '대출과 금리',
-                                style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                              ),
-                              GestureDetector(
-                                onTap: () {
-                                  HomePageController.to.isOpened[1] = !HomePageController.to.isOpened[1];
-                                },
-                                child: SvgPicture.asset(
-                                  'assets/icons/down.svg',
-                                  width: 28,
-                                  height: 28,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text(
+                                  '대출과 금리',
+                                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
                                 ),
-                              )
-                            ],
-                          ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          const Text(
-                            '32% 진행됨',
-                            style: TextStyle(fontSize: 16, color: Color.fromRGBO(255, 255, 255, 0.7), fontWeight: FontWeight.w500),
-                          ),
-                          const SizedBox(
-                            height: 12,
-                          ),
-                          LinearPercentIndicator(
-                            animation: true,
-                            lineHeight: 3.0,
-                            animationDuration: 1000,
-                            percent: 0.32,
-                            barRadius: const Radius.circular(99),
-                            progressColor: Colors.white,
-                            backgroundColor: const Color.fromRGBO(244, 153, 247, 1)
-                          )
-                        ]),
+                                GestureDetector(
+                                  onTap: () {
+                                    HomePageController.to.isOpened[1] = !HomePageController.to.isOpened[1];
+                                  },
+                                  child: SvgPicture.asset(HomePageController.to.isOpened[1] == true ? 'assets/icons/up.svg' : 'assets/icons/down.svg', width: 28, height: 28),
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 8),
+                            const Text('32% 진행됨', style: TextStyle(fontSize: 16, color: Color.fromRGBO(255, 255, 255, 0.7), fontWeight: FontWeight.w500)),
+                            const SizedBox(height: 12),
+                            LinearPercentIndicator(
+                              animation: true,
+                              lineHeight: 3.0,
+                              animationDuration: 1000,
+                              percent: 0.32,
+                              barRadius: const Radius.circular(99),
+                              progressColor: Colors.white,
+                              backgroundColor: const Color.fromRGBO(244, 153, 247, 1),
+                            )
+                          ],
+                        ),
                       ),
-                      const SizedBox(
-                        height: 4,
-                      ),
+                      const SizedBox(height: 4),
                       (HomePageController.to.isOpened[1])
                           ? CarouselSlider(
                               items: HomePageController.to.cards[1]
-                                  .map((c) => Container(
+                                  .map(
+                                    (c) => GestureDetector(
+                                      onTap: () {
+                                        print('tapped');
+                                      },
+                                      child: Container(
                                         height: 200,
                                         width: 300,
                                         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -391,17 +298,20 @@ class HomePage extends GetView<HomePageController> {
                                           mainAxisAlignment: MainAxisAlignment.end,
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                          Text(
-                                            c,
-                                            style: TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 24,
-                                              fontFamily: 'SUITE',
-                                              fontWeight: FontWeight.w600,
+                                            Text(
+                                              c,
+                                              style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 24,
+                                                fontFamily: 'SUITE',
+                                                fontWeight: FontWeight.w600,
+                                              ),
                                             ),
-                                          ),
-                                        ])
-                                      ))
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  )
                                   .toList(),
                               options: CarouselOptions(
                                 autoPlay: false,
@@ -411,114 +321,86 @@ class HomePage extends GetView<HomePageController> {
                                 initialPage: 2,
                               ),
                             )
-                          : const SizedBox(
-                              height: 0,
-                            ),
-                      (HomePageController.to.isOpened[1])
-                          ? const SizedBox(
-                              height: 24,
-                            )
-                          : const SizedBox(
-                              height: 0,
-                            ),
+                          : const SizedBox(height: 0),
+                      (HomePageController.to.isOpened[1]) ? const SizedBox(height: 24) : const SizedBox(height: 0),
                     ],
-                  )))),
-          const SizedBox(
-            height: 16,
-          ),
-          Padding(
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromRGBO(190, 240, 34, 1),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromRGBO(190, 240, 34, 1),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                '신용과 리스크 관리',
-                                style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-                              ),
-                              SvgPicture.asset(
-                                'assets/icons/down_black.svg',
-                                width: 28,
-                                height: 28,
-                              ),
+                              const Text('신용과 리스크 관리', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                              SvgPicture.asset('assets/icons/down_black.svg', width: 28, height: 28),
                             ],
                           ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          const Text(
-                            '새로 시작하기',
-                            style: TextStyle(fontSize: 16, color: Color.fromRGBO(79, 79, 79, 1), fontWeight: FontWeight.w500),
-                          ),
-                        ]),
+                          const SizedBox(height: 8),
+                          const Text('새로 시작하기', style: TextStyle(fontSize: 16, color: Color.fromRGBO(79, 79, 79, 1), fontWeight: FontWeight.w500)),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                    ],
-                  ))),
-          const SizedBox(
-            height: 16,
-          ),
-          Padding(
+                    ),
+                    const SizedBox(height: 4),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
               child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: const Color.fromRGBO(254, 211, 70, 1),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
-                        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromRGBO(254, 211, 70, 1),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
-                                '어쩌구저쩌구',
-                                style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600),
-                              ),
-                              SvgPicture.asset(
-                                'assets/icons/down_black.svg',
-                                width: 28,
-                                height: 28,
-                              ),
+                              const Text('저축과 지출', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                              SvgPicture.asset('assets/icons/down_black.svg', width: 28, height: 28),
                             ],
                           ),
-                          const SizedBox(
-                            height: 8,
-                          ),
-                          const Text(
-                            '새로 시작하기',
-                            style: TextStyle(fontSize: 16, color: Color.fromRGBO(79, 79, 79, 1), fontWeight: FontWeight.w500),
-                          ),
-                        ]),
+                          const SizedBox(height: 8),
+                          const Text('새로 시작하기', style: TextStyle(fontSize: 16, color: Color.fromRGBO(79, 79, 79, 1), fontWeight: FontWeight.w500)),
+                        ],
                       ),
-                      const SizedBox(
-                        height: 4,
-                      ),
-                    ],
-                  ))),
-          const SizedBox(
-            height: 40,
-          ),
-        ]),
+                    ),
+                    const SizedBox(height: 4),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 40),
+          ],
+        ),
       ),
-      bottomNavigationBar: const CustomNavigationBar(initialIndex: 0),
+      // bottomNavigationBar: const CustomNavigationBar(initialIndex: 0),
     );
   }
 }

@@ -469,7 +469,7 @@ class InvestPage extends GetView<InvestPageController> {
           ),
         ]),
       ),
-      bottomNavigationBar: const CustomNavigationBar(initialIndex: 1),
+      // bottomNavigationBar: const CustomNavigationBar(initialIndex: 1),
     );
   }
 }
