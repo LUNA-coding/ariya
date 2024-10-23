@@ -22,7 +22,7 @@ class VideoPageController extends GetxController with ButtonController {
     ),
     SelectQuiz(
       question: "당신은 안전한 투자를 중요하게 생각\n하는 투자자입니다. 다음 중 어떤 투자\n포트폴리오를 구성해야할까요?",
-      answer: 1,
+      answer: 2,
       choice: const ["주식:채권 = 7:3", "주식:채권 = 3:7"],
       image: [
         SvgPicture.asset('assets/images/quiz/seven_to_three.svg', height: 76, width: 76),
@@ -41,11 +41,13 @@ class VideoPageController extends GetxController with ButtonController {
       ],
     ),
     OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'X'),
-    OxQuiz(question: "채권의 수익은\n‘이자'라는 형태로\n발생한다.", answer: 'O'),
+    OxQuiz(question: "채권의 수익은\n'이자'라는 형태로\n발생한다.", answer: 'O'),
     OxQuiz(question: "주식과 채권은 모두\n투자 상품이다.\n", answer: 'O'),
     OxQuiz(question: "‘채권 매수'란,\n회사에 돈을\n빌려주는 것을 말한다.", answer: 'O'),
     OxQuiz(question: "‘주식’은\n회사의 소유권을\n나타낸다.", answer: 'O'),
   ];
+
+  static const int maxScore = 100;
 
   final RxInt _quizIndex = 0.obs;
   // final RxBool _isQuizTime = false.obs;
@@ -54,6 +56,7 @@ class VideoPageController extends GetxController with ButtonController {
   final Rx<Widget> quiz = _quiz_list[0].obs;
   final RxDouble _process = 0.0.obs;
   final RxBool isVideoDown = false.obs;
+  final RxDouble _score = 0.0.obs;
 
   String get quizAnswer => _quizAnswer.value;
   // bool get isQuizTime => _isQuizTime.value;
@@ -74,11 +77,16 @@ class VideoPageController extends GetxController with ButtonController {
     _quizStatus.value = answer == key;
     _quizAnswer.value = key;
     Timer(const Duration(seconds: 2), () {
+      if (_quizStatus.value ?? false) {
+        _score.value += (maxScore / _quiz_list.length);
+      }
+
       _refreshQuiz();
       _quizIndex.value++;
       _process.value += (1 / _quiz_list.length);
+      
       if (_quizIndex.value >= _quiz_list.length) {
-        Get.offAll(const QuizResult(point: 100));
+        Get.offAll(QuizResult(point: _score.value.toInt()));
         return;
       }
       quiz.value = _quiz_list[_quizIndex.value];

@@ -210,7 +210,9 @@ class HomePage extends GetView<HomePageController> {
           ),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Container(
+              child: Obx(() => AnimatedContainer(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -230,7 +232,9 @@ class HomePage extends GetView<HomePageController> {
                                 style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
                               ),
                               GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  HomePageController.to.isOpened[0] = !HomePageController.to.isOpened[0];
+                                },
                                 child: SvgPicture.asset(
                                   'assets/icons/up_purple.svg',
                                   width: 28,
@@ -244,7 +248,7 @@ class HomePage extends GetView<HomePageController> {
                           ),
                           const Text(
                             '62% 진행됨',
-                            style: TextStyle(fontSize: 16, color: Color.fromRGBO(255, 255, 255, 0.7), fontWeight: FontWeight.w500),
+                            style: TextStyle(fontSize: 16, color: Color(0x46FFFFFF), fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(
                             height: 12,
@@ -265,7 +269,7 @@ class HomePage extends GetView<HomePageController> {
                       ),
                       (HomePageController.to.isOpened[0])
                           ? CarouselSlider(
-                              items: HomePageController.to.cards
+                              items: HomePageController.to.cards[0]
                                   .map((c) => Container(
                                         height: 200,
                                         width: 300,
@@ -309,13 +313,15 @@ class HomePage extends GetView<HomePageController> {
                               height: 0,
                             ),
                     ],
-                  ))),
+                  )))),
           const SizedBox(
             height: 16,
           ),
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
-              child: Container(
+              child: Obx(() => AnimatedContainer(
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.fastOutSlowIn,
                   width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
@@ -334,18 +340,23 @@ class HomePage extends GetView<HomePageController> {
                                 '대출과 금리',
                                 style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
                               ),
-                              SvgPicture.asset(
-                                'assets/icons/down.svg',
-                                width: 28,
-                                height: 28,
-                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  HomePageController.to.isOpened[1] = !HomePageController.to.isOpened[1];
+                                },
+                                child: SvgPicture.asset(
+                                  'assets/icons/down.svg',
+                                  width: 28,
+                                  height: 28,
+                                ),
+                              )
                             ],
                           ),
                           const SizedBox(
                             height: 8,
                           ),
                           const Text(
-                            '17% 진행됨',
+                            '32% 진행됨',
                             style: TextStyle(fontSize: 16, color: Color.fromRGBO(255, 255, 255, 0.7), fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(
@@ -355,18 +366,63 @@ class HomePage extends GetView<HomePageController> {
                             animation: true,
                             lineHeight: 3.0,
                             animationDuration: 1000,
-                            percent: 0.6,
+                            percent: 0.32,
                             barRadius: const Radius.circular(99),
                             progressColor: Colors.white,
-                            backgroundColor: const Color.fromRGBO(244, 153, 247, 1),
-                          ),
+                            backgroundColor: const Color.fromRGBO(244, 153, 247, 1)
+                          )
                         ]),
                       ),
                       const SizedBox(
                         height: 4,
                       ),
+                      (HomePageController.to.isOpened[1])
+                          ? CarouselSlider(
+                              items: HomePageController.to.cards[1]
+                                  .map((c) => Container(
+                                        height: 200,
+                                        width: 300,
+                                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                                        decoration: BoxDecoration(
+                                          color: const Color.fromRGBO(244, 153, 247, 1),
+                                          borderRadius: BorderRadius.circular(16),
+                                        ),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.end,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: [
+                                          Text(
+                                            c,
+                                            style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 24,
+                                              fontFamily: 'SUITE',
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                          ),
+                                        ])
+                                      ))
+                                  .toList(),
+                              options: CarouselOptions(
+                                autoPlay: false,
+                                enlargeCenterPage: true,
+                                viewportFraction: 0.7,
+                                aspectRatio: 2.0,
+                                initialPage: 2,
+                              ),
+                            )
+                          : const SizedBox(
+                              height: 0,
+                            ),
+                      (HomePageController.to.isOpened[1])
+                          ? const SizedBox(
+                              height: 24,
+                            )
+                          : const SizedBox(
+                              height: 0,
+                            ),
                     ],
-                  ))),
+                  )))),
           const SizedBox(
             height: 16,
           ),

@@ -65,8 +65,6 @@ class QuizResult extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 78),
-            Image.asset('assets/images/quiz/result.png', width: double.infinity),
             const SizedBox(height: 24),
             SizedBox(
                 width: double.infinity,
@@ -82,7 +80,7 @@ class QuizResult extends StatelessWidget {
                   ),
                   onPressed: () {},
                   child: const Text(
-                    '광고 보고 2배 받기',
+                    '다음 단계',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.white,
@@ -102,7 +100,7 @@ class QuizResult extends StatelessWidget {
                 height: 56,
                 child: GestureDetector(
                   child: const Text(
-                    '괜찮아요',
+                    '홈으로',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: Colors.black,
@@ -113,6 +111,7 @@ class QuizResult extends StatelessWidget {
                       letterSpacing: -0.60,
                     ),
                   ),
+                  onTap: () => Get.offAllNamed('/home'),
                 ),
               ),
             )
