@@ -271,7 +271,7 @@ class RankPage extends GetView<RankPageController> {
           ),
         ]),
       ),
-      bottomNavigationBar: const CustomNavigationBar(initialIndex: 3),
+      // bottomNavigationBar: const CustomNavigationBar(initialIndex: 3),
     );
   }
 }
