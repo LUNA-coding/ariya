@@ -4,4 +4,5 @@ abstract class Routes {
   static const INVEST = '/invest';
   static const RANK = '/rank';
   static const VIDEO = '/video';
+  static const QUIZ2 = '/quiz2';
 }
