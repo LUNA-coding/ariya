@@ -382,7 +382,7 @@ class HomePage extends GetView<HomePageController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text('저출과 지출', style: AriyaFont.homeTitle(color: AriyaColor.black)),
+                              Text('저축과 지출', style: AriyaFont.homeTitle(color: AriyaColor.black)),
                               SvgPicture.asset('assets/icons/down_black.svg', width: 28, height: 28),
                             ],
                           ),

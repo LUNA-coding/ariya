@@ -16,6 +16,7 @@ dependencies:
   percent_indicator: ^4.2.3
   supabase: ^2.3.0
   youtube_player_flutter: ^9.0.3
+  youtube_player_iframe: ^5.2.0
 
 dev_dependencies:
   flutter_test:

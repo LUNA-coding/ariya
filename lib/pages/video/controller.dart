@@ -7,15 +7,34 @@ import 'dart:async';
 
 import 'package:ariya/pages/video/widgets/ox_quiz.dart';
 import 'package:ariya/widgets/button_controller.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart' as MobileYoutube;
+import 'package:youtube_player_iframe/youtube_player_iframe.dart' as WebYoutube;
 
 class VideoPageController extends GetxController with ButtonController {
   int index = 0;
-
-  VideoPageController(int index) {
-    this.index = index;
-  }
+  VideoPageController(this.index);
 
   static VideoPageController get to => Get.find<VideoPageController>();
+  static MobileYoutube.YoutubePlayerController mobileYoutubeController = MobileYoutube.YoutubePlayerController(
+    initialVideoId: 'eny2_ptCP7k',
+    flags: const MobileYoutube.YoutubePlayerFlags(
+      autoPlay: true,
+      mute: false,
+    ),
+  );
+  static WebYoutube.YoutubePlayerController webYoutubeController = WebYoutube.YoutubePlayerController.fromVideoId(
+    videoId: 'eny2_ptCP7k',
+    params: const WebYoutube.YoutubePlayerParams(
+      showControls: true,
+      showFullscreenButton: true,
+    ),
+  );
+  static final List<String> _video_list = [
+    'eny2_ptCP7k',
+    'XFgJ88xuk4g',
+    'oyBiNC7IEKA',
+    'o2gsNQPqM_c',
+  ];
   static final List<List<Widget>> _quiz_list = [
     [
       SelectQuiz(
@@ -157,6 +176,7 @@ class VideoPageController extends GetxController with ButtonController {
   final RxString _quizAnswer = ''.obs;
   final Rx<bool?> _quizStatus = Rx(null);
   late Rx<Widget> quiz = _quiz_list[index][0].obs;
+  late Rx<String> video = _video_list[index].obs;
   final RxDouble _process = 0.0.obs;
   final RxBool isVideoDown = false.obs;
   final RxDouble _score = 0.0.obs;
@@ -187,7 +207,7 @@ class VideoPageController extends GetxController with ButtonController {
       _refreshQuiz();
       _quizIndex.value++;
       _process.value += (1 / _quiz_list[index].length);
-      
+
       if (_quizIndex.value >= _quiz_list[index].length) {
         Get.offAll(QuizResult(point: _score.value.toInt()));
         return;

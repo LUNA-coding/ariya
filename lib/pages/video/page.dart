@@ -1,11 +1,11 @@
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+// import 'package:youtube_player_iframe/youtube_player_iframe.dart' as MobileYoutube;
+import 'package:youtube_player_iframe/youtube_player_iframe.dart' as WebYoutube;
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'dart:async';
 
 import 'package:ariya/pages/video/controller.dart';
-import 'package:ariya/routes/routes.dart';
 import 'package:ariya/global.dart';
 
 class VideoPage extends GetView<VideoPageController> {
@@ -19,18 +19,19 @@ class VideoPage extends GetView<VideoPageController> {
 
   @override
   Widget build(BuildContext context) {
-    YoutubePlayerController controller = YoutubePlayerController(
-      initialVideoId: 'eny2_ptCP7k',
-      flags: const YoutubePlayerFlags(
-        autoPlay: true,
-        mute: false,
-      ),
-    );
-
     var seconds = 0.obs;
     var timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       seconds.value++;
     });
+
+    WebYoutube.YoutubePlayerController webYoutubeController = WebYoutube.YoutubePlayerController.fromVideoId(
+      videoId: VideoPageController.to.video.value,
+      autoPlay: true,
+      params: const WebYoutube.YoutubePlayerParams(
+        showControls: true,
+        showFullscreenButton: true,
+      ),
+    );
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(255, 255, 255, 1),
@@ -135,7 +136,15 @@ class VideoPage extends GetView<VideoPageController> {
                       height: 75,
                       child: GestureDetector(
                         behavior: HitTestBehavior.translucent,
-                        onTap: () => VideoPageController.to.isVideoDown.value = !VideoPageController.to.isVideoDown.value,
+                        onTap: () {
+                          // VideoPageController.mobileYoutubeController.pause();
+                          if (VideoPageController.to.isVideoDown.value) {
+                            webYoutubeController.playVideo();
+                          } else {
+                            webYoutubeController.pauseVideo();
+                          }
+                          VideoPageController.to.isVideoDown.value = !VideoPageController.to.isVideoDown.value;
+                        },
                         child: Container(
                           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                           child: Row(
@@ -154,13 +163,13 @@ class VideoPage extends GetView<VideoPageController> {
                       height: MediaQuery.of(context).size.height - 75,
                       child: AspectRatio(
                         aspectRatio: 9 / 16,
-                        child: YoutubePlayer(
-                          controller: controller,
-                          showVideoProgressIndicator: true,
-                          progressIndicatorColor: Colors.amber,
-                          onEnded: (_) {
-                            VideoPageController.to.isVideoDown.value = true;
-                          },
+                        child: WebYoutube.YoutubePlayer(
+                          controller: webYoutubeController,
+                          // showVideoProgressIndicator: true,
+                          // progressIndicatorColor: Colors.amber,
+                          // onEnded: (_) {
+                          //   VideoPageController.to.isVideoDown.value = true;
+                          // },
                         ),
                       ),
                     ),
