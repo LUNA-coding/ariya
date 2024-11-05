@@ -77,7 +77,10 @@ class SelectQuizButton extends StatelessWidget {
             children: [
               image,
               const SizedBox(height: 12),
-              Text(choice, style: AriyaFont.custom(22, AriyaWeight.regular, AriyaColor.black, spacing: -0.3)),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: Text(choice, style: AriyaFont.custom(22, AriyaWeight.regular, AriyaColor.black, spacing: -0.3)),
+              )
             ],
           ),
         ),

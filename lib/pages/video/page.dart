@@ -38,19 +38,19 @@ class VideoPage extends GetView<VideoPageController> {
         backgroundColor: Colors.transparent,
         scrolledUnderElevation: 0,
         title: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 16),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  GestureDetector(
-                    onTap: () => Get.offAllNamed(Routes.HOME),
-                    child: const Icon(
-                      Icons.close_rounded,
-                      color: Color.fromRGBO(79, 79, 79, 1),
-                    ),
-                  ),
+                  // GestureDetector(
+                  //   onTap: () => Get.offAllNamed(Routes.HOME),
+                  //   child: const Icon(
+                  //     Icons.close_rounded,
+                  //     color: Color.fromRGBO(79, 79, 79, 1),
+                  //   ),
+                  // ),
                   Obx(
                     () => LinearPercentIndicator(
                       lineHeight: 8.0,
@@ -59,7 +59,7 @@ class VideoPage extends GetView<VideoPageController> {
                       barRadius: const Radius.circular(99),
                       progressColor: const Color.fromRGBO(156, 112, 213, 1),
                       backgroundColor: const Color.fromRGBO(235, 235, 235, 1),
-                      width: 220,
+                      width: 200,
                     ),
                   ),
                   Container(

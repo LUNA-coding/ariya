@@ -19,7 +19,7 @@ class VideoPageController extends GetxController with ButtonController {
   static final List<List<Widget>> _quiz_list = [
     [
       SelectQuiz(
-        question: "두 명의 사람이 사과를 먹고 싶은데,\n남은 사과가 하나 밖에 없습니다.\n사과의 가격은 어떻게 변할까요?",
+        question: "두 명의 사람이 사과를 먹고 싶은데, 남은 사과가 하나 밖에 없습니다. 사과의 가격은 어떻게 변할까요?",
         answer: 1,
         choice: const ["올라간다", "내려간다"],
         image: [
@@ -28,7 +28,7 @@ class VideoPageController extends GetxController with ButtonController {
         ],
       ),
       SelectQuiz(
-        question: "당신은 안전한 투자를 중요하게 생각\n하는 투자자입니다. 다음 중 어떤 투자\n포트폴리오를 구성해야할까요?",
+        question: "당신은 안전한 투자를 중요하게 생각 하는 투자자입니다. 다음 중 어떤 투자 포트폴리오를 구성해야할까요?",
         answer: 2,
         choice: const ["주식:채권 = 7:3", "주식:채권 = 3:7"],
         image: [
@@ -37,7 +37,7 @@ class VideoPageController extends GetxController with ButtonController {
         ],
       ),
       SelectQuiz(
-        question: "당신은 고위험, 고수익 투자를\n지향하는 투자자입니다.\n둘 중 어떤 상품을 매수해야 할까요?",
+        question: "당신은 고위험, 고수익 투자를 지향하는 투자자입니다. 둘 중 어떤 상품을 매수해야 할까요?",
         answer: 1,
         choice: const ["주식", "채권"],
         image: [
@@ -45,15 +45,15 @@ class VideoPageController extends GetxController with ButtonController {
           Image.asset('assets/images/quiz/bond.png', height: 76, width: 76),
         ],
       ),
-      OxQuiz(question: "보통의 경우,\n채권이 주식보다\n변동성이 크다.", answer: 'X'),
-      OxQuiz(question: "채권의 수익은\n'이자'라는 형태로\n발생한다.", answer: 'O'),
-      OxQuiz(question: "주식과 채권은 모두\n투자 상품이다.\n", answer: 'O'),
-      OxQuiz(question: "‘채권 매수'란,\n회사에 돈을\n빌려주는 것을 말한다.", answer: 'O'),
-      OxQuiz(question: "‘주식’은\n회사의 소유권을\n나타낸다.", answer: 'O'),
+      OxQuiz(question: "보통의 경우, 채권이 주식보다 변동성이 크다.", answer: 'X'),
+      OxQuiz(question: "채권의 수익은 '이자'라는 형태로 발생한다.", answer: 'O'),
+      OxQuiz(question: "주식과 채권은 모두 투자 상품이다. ", answer: 'O'),
+      OxQuiz(question: "‘채권 매수'란, 회사에 돈을 빌려주는 것을 말한다.", answer: 'O'),
+      OxQuiz(question: "‘주식’은 회사의 소유권을 나타낸다.", answer: 'O'),
     ],
     [
       SelectQuiz(
-        question: "한국의 대표적인 지수는 KOSPI에요.\n그리고 일본의 재표적인 주가지수는\n[    ] 입니다",
+        question: "한국의 대표적인 지수는 KOSPI에요. 그리고 일본의 재표적인 주가지수는 [    ] 입니다",
         answer: 1,
         choice: const ["닛케이", "다우존스"],
         image: const [
@@ -62,7 +62,7 @@ class VideoPageController extends GetxController with ButtonController {
         ],
       ),
       SelectQuiz(
-        question: "코스피 혹은 코스닥시장에 처음\n상장하는 것을 [   ]라고 해요.(영어)",
+        question: "코스피 혹은 코스닥시장에 처음 상장하는 것을 [   ]라고 해요.(영어)",
         answer: 1,
         choice: const ["IPO", "ICO"],
         image: const [
@@ -71,7 +71,7 @@ class VideoPageController extends GetxController with ButtonController {
         ],
       ),
       SelectQuiz(
-        question: "달래는 반도체를 제조하는 회사를 만들어\n시가총액 ５조원 가치의 회사를 만들었다.\n어디에 상장하는 것이 좋을까?",
+        question: "달래는 반도체를 제조하는 회사를 만들어 시가총액 ５조원 가치의 회사를 만들었다. 어디에 상장하는 것이 좋을까?",
         answer: 1,
         choice: const ["KOSPI", "KOSDAQ"],
         image: const [
@@ -79,9 +79,9 @@ class VideoPageController extends GetxController with ButtonController {
           SizedBox(),
         ],
       ),
-      OxQuiz(question: "코스피에 상장하기위해 최소 필요한\n자기자본금은 300억이다.", answer: 'O'),
+      OxQuiz(question: "코스피에 상장하기위해 최소 필요한 자기자본금은 300억이다.", answer: 'O'),
       SelectQuiz(
-        question: "달래는 AI를 기반으로 혁신적인 스타트업\n'아리야'를 만들어 500억원의 기업가치를 인정 받았다. 어디에 상장하는 것이 좋을까?",
+        question: "달래는 AI를 기반으로 혁신적인 스타트업 '아리야'를 만들어 500억원의 기업가치를 인정 받았다. 어디에 상장하는 것이 좋을까?",
         answer: 2,
         choice: const ["KOSPI", "KOSDAQ"],
         image: const [
@@ -128,7 +128,7 @@ class VideoPageController extends GetxController with ButtonController {
           SizedBox(),
         ],
       ),
-      OxQuiz(question: "코스피에 상장하기위해 최소 필요한\n자기자본금은 300억이다.", answer: 'O'),
+      OxQuiz(question: "코스피에 상장하기위해 최소 필요한 자기자본금은 300억이다.", answer: 'O'),
       SelectQuiz(
         question: "달래는 공매도가 시장에 어떤 영향을 미치는지 궁금합니다. 다음중 공매도가 시장에 미치는 영향으로 옳은 것은?",
         answer: 1,
