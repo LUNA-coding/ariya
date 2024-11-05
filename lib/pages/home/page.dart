@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 
 import 'package:ariya/pages/home/controller.dart';
+import 'package:ariya/global.dart';
 
 class HomePage extends GetView<HomePageController> {
   const HomePage({super.key});
@@ -54,17 +55,15 @@ class HomePage extends GetView<HomePageController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Row(
+                  Row(
                     crossAxisAlignment: CrossAxisAlignment.baseline,
                     textBaseline: TextBaseline.alphabetic,
                     children: [
-                      Text('단단무지', style: TextStyle(fontSize: 24, color: Colors.black, fontWeight: FontWeight.w600)),
-                      Text('님, 오늘도 화이팅!🔥', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w500)),
+                      Text('단단무지', style: AriyaFont.custom(24, AriyaWeight.semiBold, Colors.black)),
+                      Text('님, 오늘도 파이팅!', style: AriyaFont.custom(20, AriyaWeight.regular, Colors.black)),
                     ],
                   ),
-                  const SizedBox(
-                    height: 18,
-                  ),
+                  const SizedBox(height: 18),
                   Container(
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -75,10 +74,10 @@ class HomePage extends GetView<HomePageController> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Row(
+                        Row(
                           children: [
-                            SizedBox(width: 12),
-                            Text('총 자산', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                            const SizedBox(width: 12),
+                            Text('총 자산', style: AriyaFont.homeTitle(color: AriyaColor.black)),
                           ],
                         ),
                         Container(
@@ -87,10 +86,7 @@ class HomePage extends GetView<HomePageController> {
                             borderRadius: BorderRadius.circular(999),
                             color: const Color.fromRGBO(54, 54, 54, 1),
                           ),
-                          child: const Text(
-                            '879,108원',
-                            style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                          ),
+                          child: Text('879,108원', style: AriyaFont.homeTitle()),
                         )
                       ],
                     ),
@@ -113,7 +109,7 @@ class HomePage extends GetView<HomePageController> {
                           Row(
                             children: [
                               const SizedBox(width: 12),
-                              const Text('학교 랭킹', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                              Text('학교 랭킹', style: AriyaFont.homeTitle(color: AriyaColor.black)),
                               const SizedBox(width: 6),
                               Container(
                                 height: 26,
@@ -128,7 +124,7 @@ class HomePage extends GetView<HomePageController> {
                               borderRadius: BorderRadius.circular(999),
                               color: const Color.fromRGBO(54, 54, 54, 1),
                             ),
-                            child: const Text('6위', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600)),
+                            child: Text('6위', style: AriyaFont.homeTitle()),
                           )
                         ],
                       ),
@@ -162,7 +158,7 @@ class HomePage extends GetView<HomePageController> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text('주식과 투자', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600)),
+                                Text('주식과 투자', style: AriyaFont.homeTitle()),
                                 GestureDetector(
                                   onTap: () => HomePageController.to.isOpened[0] = !HomePageController.to.isOpened[0],
                                   child: SvgPicture.asset(HomePageController.to.isOpened[0] == true ? 'assets/icons/up_purple.svg' : 'assets/icons/down.svg', width: 28, height: 28),
@@ -170,10 +166,7 @@ class HomePage extends GetView<HomePageController> {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            const Text(
-                              '62% 진행됨',
-                              style: TextStyle(fontSize: 16, color: Color(0x46FFFFFF), fontWeight: FontWeight.w500),
-                            ),
+                            Text('62% 진행됨', style: AriyaFont.custom(16, AriyaWeight.regular, const Color.fromRGBO(255, 255, 255, 0.7))),
                             const SizedBox(
                               height: 12,
                             ),
@@ -212,12 +205,7 @@ class HomePage extends GetView<HomePageController> {
                                           children: [
                                             Text(
                                               value,
-                                              style: const TextStyle(
-                                                color: Colors.white,
-                                                fontSize: 24,
-                                                fontFamily: 'SUITE',
-                                                fontWeight: FontWeight.w600,
-                                              ),
+                                              style: const TextStyle(color: Colors.white, fontSize: 24, fontFamily: 'SUITE', fontWeight: FontWeight.w600),
                                             ),
                                           ],
                                         ),
@@ -265,10 +253,7 @@ class HomePage extends GetView<HomePageController> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text(
-                                  '대출과 금리',
-                                  style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.w600),
-                                ),
+                                Text('대출과 금리', style: AriyaFont.homeTitle()),
                                 GestureDetector(
                                   onTap: () {
                                     HomePageController.to.isOpened[1] = !HomePageController.to.isOpened[1];
@@ -278,7 +263,7 @@ class HomePage extends GetView<HomePageController> {
                               ],
                             ),
                             const SizedBox(height: 8),
-                            const Text('32% 진행됨', style: TextStyle(fontSize: 16, color: Color.fromRGBO(255, 255, 255, 0.7), fontWeight: FontWeight.w500)),
+                            Text('32% 진행됨', style: AriyaFont.custom(16, AriyaWeight.regular, const Color.fromRGBO(255, 255, 255, 0.7))),
                             const SizedBox(height: 12),
                             LinearPercentIndicator(
                               animation: true,
@@ -363,12 +348,12 @@ class HomePage extends GetView<HomePageController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('신용과 리스크 관리', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                              Text('신용과 리스크 관리', style: AriyaFont.homeTitle(color: AriyaColor.black)),
                               SvgPicture.asset('assets/icons/down_black.svg', width: 28, height: 28),
                             ],
                           ),
                           const SizedBox(height: 8),
-                          const Text('새로 시작하기', style: TextStyle(fontSize: 16, color: Color.fromRGBO(79, 79, 79, 1), fontWeight: FontWeight.w500)),
+                          Text('아직 준비중이에요!', style: AriyaFont.custom(16, AriyaWeight.regular, AriyaColor.grayscale800))
                         ],
                       ),
                     ),
@@ -397,12 +382,12 @@ class HomePage extends GetView<HomePageController> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text('저축과 지출', style: TextStyle(fontSize: 20, color: Colors.black, fontWeight: FontWeight.w600)),
+                              Text('저출과 지출', style: AriyaFont.homeTitle(color: AriyaColor.black)),
                               SvgPicture.asset('assets/icons/down_black.svg', width: 28, height: 28),
                             ],
                           ),
                           const SizedBox(height: 8),
-                          const Text('새로 시작하기', style: TextStyle(fontSize: 16, color: Color.fromRGBO(79, 79, 79, 1), fontWeight: FontWeight.w500)),
+                          Text('아직 준비중이에요!', style: AriyaFont.custom(16, AriyaWeight.regular, AriyaColor.grayscale800))
                         ],
                       ),
                     ),
