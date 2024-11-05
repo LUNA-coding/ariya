@@ -20,11 +20,11 @@ class OxQuizTitle extends StatelessWidget {
           children: [
             const Icon(Icons.star_rounded, size: 24, color: AriyaColor.purple),
             const SizedBox(width: 4),
-            Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AriyaColor.purple, letterSpacing: -0.03)),
+            Text(title, style: AriyaFont.description()),
           ],
         ),
         const SizedBox(width: 8),
-        Text(question, style: const TextStyle(fontSize: 28, fontWeight: FontWeight.w600, letterSpacing: -0.02)),
+        Text(question, style: AriyaFont.title()),
       ],
     );
   }

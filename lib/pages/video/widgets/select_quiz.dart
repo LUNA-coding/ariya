@@ -19,11 +19,11 @@ class SelectQuizTitle extends StatelessWidget {
           children: [
             const Icon(Icons.star_rounded, size: 24, color: AriyaColor.purple),
             const SizedBox(width: 4),
-            Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AriyaColor.purple, letterSpacing: -0.03)),
+            Text(title, style: AriyaFont.description()),
           ],
         ),
         const SizedBox(width: 8),
-        Text(question, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w600, letterSpacing: -0.02)),
+        Text(question, style: AriyaFont.title()),
       ],
     );
   }
@@ -77,7 +77,7 @@ class SelectQuizButton extends StatelessWidget {
             children: [
               image,
               const SizedBox(height: 12),
-              Text(choice, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w400, letterSpacing: -0.3)),
+              Text(choice, style: AriyaFont.custom(22, AriyaWeight.regular, AriyaColor.black, spacing: -0.3)),
             ],
           ),
         ),
@@ -146,11 +146,8 @@ class SelectQuiz extends StatelessWidget {
                             ),
                             child: Text(
                               "확인",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.w400,
+                              style: AriyaFont.description(
                                 color: VideoPageController.to.quizAnswer.isEmpty ? AriyaColor.grayscale400 : AriyaColor.grayscale800,
-                                letterSpacing: -0.3,
                               ),
                             ),
                           ),
