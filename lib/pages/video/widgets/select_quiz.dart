@@ -30,17 +30,26 @@ class SelectQuizTitle extends StatelessWidget {
 }
 
 class SelectQuizButton extends StatelessWidget {
-  const SelectQuizButton({super.key, required this.image, required this.choice});
+  SelectQuizButton({super.key, required this.image, required this.choice});
 
   final Widget image;
   final String choice;
 
+  bool isEnd = false;
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTapDown: (_) => VideoPageController.to.press((key as ValueKey).value),
-      onTapCancel: () => VideoPageController.to.unpress(),
+      onTapDown: (_) => {
+        if (!VideoPageController.to.isQuizSolved)
+          VideoPageController.to.press((key as ValueKey).value)
+      },
+      onTapCancel: () => {
+        if (!VideoPageController.to.isQuizSolved)
+          VideoPageController.to.unpress()
+      },
       onTapUp: (_) {
+        if (VideoPageController.to.isQuizSolved) return;
         if (VideoPageController.to.isPressed(VideoPageController.to.quizAnswer)) {
           VideoPageController.to.quizAnswer = '';
           VideoPageController.to.unpress();
